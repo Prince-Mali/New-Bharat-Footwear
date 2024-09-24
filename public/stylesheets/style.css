@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+
+/* footer */
+.footer-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-container a {
+    color: #222;
+    text-decoration: none;
+}
+
+.links {
+    display: flex;
+    width: 25vw;
+    justify-content: space-between;
+}
+
+.contact {
+    width: 25vw;
+    margin-left: 2rem;
+}
+
+.social-info-container {
+    width: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+@media (max-width : 800px) {
+    .footer-container {
+        display: block;
+    }
+    .links {
+        width: 80vw;
+    }
+    .contact {
+        width: 80vw;
+        margin-left: 0;
+    }
+    .contact-links {
+        display: flex;
+        justify-content: space-between;
+    }
+    .social-info-container {
+        width: 40vw;
+    }
+}
+
+/* ------- home page ------ */
+
+/* image-scroller */
+.image-scroller {
+    width: 85vw;
+    display: flex;
+    align-items: center;
+}
+
+.image-scroller button  {
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: scroll;
+    align-items: center;
+}
+
+.image-container::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width : 800px) {
+    .scroll-btn {
+        display: none;
+    }
+    .image-scroller {
+        width: 100%;
+        padding: 0.4rem;
+    }
+    .image-container {
+        width: 100%;
+    }
+    .image-container img {
+        width: 480px;
+    }
+}
+
+/* Category */
+
+.category-container {
+    text-align: center;
+}
+
+.category-container .card {
+    border: none;
+    margin-right: 1rem;
+}
+
+.category-container .card-title {
+    font-weight: 400;
+}
+
+@media (max-width : 800px) {
+    .category-container h2 {
+        font-size: 2rem;
+    }
+}
+
+
+/* product-container */
+
+.product-container {
+    text-align: center;
+}
+
+.product-container .card-group {
+    align-items: baseline;
+}
+
+.product-container .card {
+    border: none;
+    margin-right: 0.4rem;
+    height: 200px;
+    align-items: center;
+}
+
+.product-container img {
+    width: 150px;
+}
+
+@media (max-width : 800px) {
+    .product-container h2 {
+        font-size: 2rem;
+    }
+    .product-group {
+        display: flex;
+        overflow-x: scroll;
+    }
+    .product-group .card {
+        width: auto;
+        min-width: 150px;
+    }
+    .product-group .card img {
+        width: 100%;
+    }
+}
+
+/* About-container */
+
+.about-container {
+    display: flex;
+    height: 80vh;
+    background-color: #259fafda;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.about-container .image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-container img {
+    width: 80%;
+}
+
+.about-container .about {
+    text-align: center;
+    width: 50%;
+    color: #fff;
+    line-height: 2rem;
+}
+
+.about p {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.about button {
+    padding: 0.4rem 0.8rem;
+    background-color: #222;
+    color: #fff;
+    border-radius: 1.4rem;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+@media (max-width : 800px) {
+    .about-container {
+        flex-direction: column;
+        height: 100%;
+    }
+    .about-container .image {
+        width: 100%;
+    }
+    .about-container .about {
+        width: 100%;
+        line-height: 1.3rem;
+        font-size: 1rem;
+    }
+}
+
+/* contact-page */
+
+.contact-page {
+    text-align: center;
+}
+
+.contact-page .card {
+    border: none;
+}
+
+.card-header {
+    border: none !important;
+    background-color: #fff !important;
+    font-size: 1.5rem;
+}
+
+.card-header .contact-icon {
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #259fafda;
+    color: #fff;
+}
+
+/* contact form */
+
+.form-container {
+    display: flex;
+}
+
+.form-container .form-control {
+    background-color: #EFEFEF;
+    border-radius: 0;
+    padding: 0.5rem;
+    box-shadow: none !important;
+}
+
+.form-btn {
+    background-color: #259fafda !important;
+    color: #fff !important;
+    border-radius: 1.4rem !important;
+}
+
+@media (max-width : 800px) {
+    .contact-form-container {
+        display: flex;
+        margin-left: 0 !important;
+    }
+    .form-container {
+        flex-direction: column;
+    }
+    .contact-form-input {
+        width: 100% !important;
+    } 
+}
+
+/* map */
+
+#map {
+    width: 85vw;
+    height: 60vh;
+}
+
+@media (max-width : 800px) {
+    #map {
+        width: 90vw;
+        height: 90vw;
+    }
+}
+
