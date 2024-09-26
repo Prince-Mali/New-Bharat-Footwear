@@ -80,12 +80,27 @@ body {
     width: 85vw;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
-.image-scroller button  {
+.image-scroller .left-scroll-btn {
+    position: absolute;
+    left: 2rem;
+}
+
+.image-scroller .right-scroll-btn {
+    position: absolute;
+    right: 2rem;
+}
+
+.image-scroller button {
     border: none;
-    background-color: transparent;
-    font-size: 2rem;
+    background-color: #ffffffe6;
+    border-radius: 50%;
+    box-shadow: -2px 2px 2px black;
+    font-size: 1.4rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 .image-container {
@@ -120,6 +135,10 @@ body {
 
 .category-container {
     text-align: center;
+
+    .card-group {
+        display: flex !important;
+    }
 }
 
 .category-container .card {
@@ -142,21 +161,71 @@ body {
 
 .product-container {
     text-align: center;
+    position: relative;
 }
 
-.product-container .card-group {
+.product-container .scroll-container {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+}
+
+.product-container .scroll-btn button {
+    background-color: #fff;
+    font-size: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px black;
+}
+
+.product-container .left-scroll-btn {
+    position: absolute;
+    z-index: 10;
+    left: 2rem;
+    top: 50%;
+}
+
+.product-container .right-scroll-btn {
+    position: absolute;
+    z-index: 10;
+    right: 2rem;
+    top: 50%;
+}
+
+.product-container .product-group {
+    display: flex;
+    flex-wrap: nowrap;
     align-items: baseline;
+    overflow-x: scroll;
+    align-items: center;
 }
 
-.product-container .card {
+.product-container button {
+    background-color: transparent;
     border: none;
-    margin-right: 0.4rem;
-    height: 200px;
+    font-size: 2rem;
+}
+
+.product-group::-webkit-scrollbar {
+    display: none;
+}
+
+.product-group a {
+    text-decoration: none;
+}
+
+.product-group .card {
+    min-width: 200px;
+    border: none;
+    margin-right: 0.6rem !important;
     align-items: center;
 }
 
 .product-container img {
-    width: 150px;
+    min-width: 150px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
 @media (max-width : 800px) {
@@ -169,10 +238,7 @@ body {
     }
     .product-group .card {
         width: auto;
-        min-width: 150px;
-    }
-    .product-group .card img {
-        width: 100%;
+        min-width: 160px;
     }
 }
 

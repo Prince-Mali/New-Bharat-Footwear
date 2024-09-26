@@ -1,5 +1,5 @@
-let leftScrollBtn = document.querySelector('.left-scroll-btn');
-let rightScrollBtn = document.querySelector('.right-scroll-btn');
+let leftScrollBtn = document.querySelector('.image-scroller .left-scroll-btn');
+let rightScrollBtn = document.querySelector('.image-scroller .right-scroll-btn');
 let imageContainer = document.querySelector('.image-container');
 
 

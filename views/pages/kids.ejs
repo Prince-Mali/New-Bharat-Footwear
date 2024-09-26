@@ -3,53 +3,86 @@
 
 <body>
     <div class="main mt-4">
-        <div class="filter-section">
+        <div class="filter-section-container">
             <div class="row">
                 <!-- Filter Section -->
                 <div class="col-md-3 filter-section">
-                    <h5>Filter by:</h5>
-    
+                    <div class="filter-header">
+                        <h5>FILTERS</h5>
+                        <button class="cross-btn"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+
                     <!-- Price Filter -->
                     <h6>Price</h6>
                     <input type="number" class="form-control mb-2" placeholder="Min Price" aria-label="Min Price">
                     <input type="number" class="form-control mb-2" placeholder="Max Price" aria-label="Max Price">
-                </div>
 
-                <!-- Color Filter -->
-                <h6>Color</h6>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="black" id="colorBlack">
-                    <label class="form-check-label" for="colorBlack">Black</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="brown" id="colorBrown">
-                    <label class="form-check-label" for="colorBrown">Brown</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="white" id="colorWhite">
-                    <label class="form-check-label" for="colorWhite">White</label>
-                </div>
+                    <!-- Color Filter -->
+                    <h6>Color</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="black" id="colorBlack">
+                        <label class="form-check-label" for="colorBlack">Black</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="brown" id="colorBrown">
+                        <label class="form-check-label" for="colorBrown">Brown</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="white" id="colorWhite">
+                        <label class="form-check-label" for="colorWhite">White</label>
+                    </div>
 
-                <!-- Size Filter -->
-                <h6>Size</h6>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="6" id="size6">
-                    <label class="form-check-label" for="size6">Size 6</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="7" id="size7">
-                    <label class="form-check-label" for="size7">Size 7</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="8" id="size8">
-                    <label class="form-check-label" for="size8">Size 8</label>
+                    <!-- Size Filter -->
+                    <h6>Size</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="6" id="size6">
+                        <label class="form-check-label" for="size6">Size 6</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="7" id="size7">
+                        <label class="form-check-label" for="size7">Size 7</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="8" id="size8">
+                        <label class="form-check-label" for="size8">Size 8</label>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="main-container">
             <div class="content">
-                <p style="text-align: center;">No products listed!</p>
-            </div>        
+                <div class="card-container">
+                    <h2>Kid's Footwear</h2>
+                    <button class="filter-btn">FILTERS</button>
+                    <div class="cards">
+                        <% productList.forEach(function (product){ %>
+                            <a href="">
+                                <div class="card">
+                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-title"><b><%= product.title %></b></p>
+                                        <p class="card-text">&#8377;<%= product.price %></p>
+                                    </div>
+                                </div>
+                            </a>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        let filterBtn = document.querySelector('.filter-btn');
+        let crossBtn = document.querySelector('.cross-btn');
+        let filterContainer = document.querySelector('.filter-section-container');
+
+        filterBtn.addEventListener('click', () => {
+            filterContainer.style.left = 0;
+        });
+
+        crossBtn.addEventListener('click', () => {
+            filterContainer.style.left = '-70vw';
+        });
+    </script>
 </body>
