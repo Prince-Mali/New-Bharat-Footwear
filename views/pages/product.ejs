@@ -1,0 +1,31 @@
+<%- layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/product.css">
+<body>
+    <div class="main">
+        <div class="product">
+            <div class="img-box">
+                <img src="<%= product.imageUrl %>" alt="">
+            </div>
+            <div class="product-detail-container">
+                <h1><%= product.title %></h1>
+                <p>&#8377;<%= product.price %>/-</p>
+                <p>Color : <%= product.color %></p>
+                <p>Size : <%= product.size %></p>
+                <div class="">
+                    <button><a href="">Add to Cart</a></button>
+                    <button><a href="">Buy Now</a></button>
+                    <p><i class="fa-solid fa-shield-halved"></i>&nbsp;<b style="font-weight: 600;">Safe and Secure payments. 100% Authentic products</b></p>
+                </div>
+                <p>Description : <%= product.description %></p>
+                <hr>
+                <div class="product-detail">
+                    <p>Ocation : Casual</p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="share-product">
+                <a href=""><i class="fa-solid fa-share"></i></a>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,5 +1,5 @@
 <%- layout('/layouts/boilerplate') %>
-<link rel="stylesheet" href="/stylesheets/product.css">
+<link rel="stylesheet" href="/stylesheets/products.css">
 
 <body>
     <div class="main mt-4">
@@ -12,40 +12,38 @@
                         <button class="cross-btn"><i class="fa-solid fa-xmark"></i></button>
                     </div>
 
-                    <!-- Price Filter -->
-                    <h6>Price</h6>
-                    <input type="number" class="form-control mb-2" placeholder="Min Price" aria-label="Min Price">
-                    <input type="number" class="form-control mb-2" placeholder="Max Price" aria-label="Max Price">
+                    <form action="/filtered/kids" method="get">
+                        <!-- Price Filter -->
+                        <h6>Price</h6>
 
-                    <!-- Color Filter -->
-                    <h6>Color</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="black" id="colorBlack">
-                        <label class="form-check-label" for="colorBlack">Black</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="brown" id="colorBrown">
-                        <label class="form-check-label" for="colorBrown">Brown</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="white" id="colorWhite">
-                        <label class="form-check-label" for="colorWhite">White</label>
-                    </div>
+                        <label class="form-label" for="minPrice">Min Price:</label>
+                        <input class="form-control" type="number" id="minPrice" name="minPrice" placeholder="500">
+                        <label class="form-label" for="maxPrice">Max Price:</label>
+                        <input class="form-control" type="number" id="maxPrice" name="maxPrice" placeholder="2000">
+                    
+                        <!-- Color Filter -->
+                        <h6>Color</h6>
+                        <select class="form-select" id="color" name="color">
+                            <option value="">All</option>
+                            <option value="Black">Black</option>
+                            <option value="Brown">Brown</option>
+                            <option value="White">White</option>
+                        </select>
+                    
+                        <!-- Size Filter -->
+                        <h6>Size</h6>
+                        <select class="form-select" id="size" name="size">
+                            <option value="">All</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
 
-                    <!-- Size Filter -->
-                    <h6>Size</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="6" id="size6">
-                        <label class="form-check-label" for="size6">Size 6</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="7" id="size7">
-                        <label class="form-check-label" for="size7">Size 7</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="8" id="size8">
-                        <label class="form-check-label" for="size8">Size 8</label>
-                    </div>
+                        <input type="text" value="Kids" name="category" style="display: none;">
+                    
+                        <!-- Submit Button -->
+                        <button class="btn btn-primary mt-3" type="submit">Apply Filters</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -56,7 +54,7 @@
                     <button class="filter-btn">FILTERS</button>
                     <div class="cards">
                         <% productList.forEach(function (product){ %>
-                            <a href="">
+                            <a href="/products/<%= product._id %>">
                                 <div class="card">
                                     <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
                                     <div class="card-body">

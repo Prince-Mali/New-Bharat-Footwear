@@ -106,9 +106,12 @@ body {
 .image-container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
     overflow-x: scroll;
     align-items: center;
+}
+
+.image-container img {
+    object-fit: contain;
 }
 
 .image-container::-webkit-scrollbar {
@@ -121,13 +124,12 @@ body {
     }
     .image-scroller {
         width: 100%;
-        padding: 0.4rem;
     }
     .image-container {
         width: 100%;
     }
     .image-container img {
-        width: 480px;
+        width: 100vw;
     }
 }
 
@@ -198,7 +200,6 @@ body {
     flex-wrap: nowrap;
     align-items: baseline;
     overflow-x: scroll;
-    align-items: center;
 }
 
 .product-container button {

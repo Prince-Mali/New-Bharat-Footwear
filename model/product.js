@@ -6,7 +6,7 @@ const productSchema = new Schema({
         type : String,
         required : true
     },
-    discription : {
+    description : {
         type : String,
         required : true
     },
@@ -25,7 +25,7 @@ const productSchema = new Schema({
     },
     color : {
         type : String,
-        default : 'black'
+        required : true
     },
     size : {
         type : Number,

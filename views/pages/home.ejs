@@ -7,10 +7,10 @@
             </button>
         </div>
         <div class="image-container">
-            <a href="/mens-footwear">
+            <a href="/men">
                 <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727185544/9FD66891FDAB462B07DBADD30A_1661508642270_npjfjc.webp" alt="">
             </a>
-            <a href="/womens-footwear">
+            <a href="/women">
                 <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727185574/379B56BF77F0A0BB3537DC1BC7_1661508735058_qop35r.webp" alt="">
             </a>
         </div>
@@ -25,19 +25,19 @@
         <div class="p-3 mb-3"><h2>Category</h2></div>
         <div class="card-group">
             <div class="card">
-                <a href="/mens-footwear">
+                <a href="/men">
                     <img class="card-img-top" src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727185649/0579F9610B83214C25AEC27A3C_1661510925102_p4qqsc.webp" alt="">
                 </a>
                 <h5 class="card-title">Men's Footwear</h5>
             </div>
             <div class="card">
-                <a href="/womens-footwear">
+                <a href="/women">
                     <img class="card-img-top" src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727185655/F159FD2AC8DE4F4CA254CC213C_1661511131192_rkp7kx.webp" alt="">
                 </a>
                 <h5 class="card-title">Women's Footwear</h5>
             </div>
             <div class="card">
-                <a href="/kids-footwear">
+                <a href="/kids">
                     <img class="card-img-top" src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727185664/B038539C4F01E12F67136D62D9_1661511517650_zndsi5.webp" alt="">
                 </a>
                 <h5 class="card-title">Kid's Footwear</h5>
@@ -51,7 +51,7 @@
             <div class="scroll-btn"><button class="left-scroll-btn"><i class="fa-solid fa-angle-left"></i></button></div>
             <div class="card-group product-group">
                 <% productlist.forEach(function (product){%>
-                    <a href="">
+                    <a href="/products/<%= product._id %>">
                         <div class="card">
                                 <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
                                 <div class="card-body">

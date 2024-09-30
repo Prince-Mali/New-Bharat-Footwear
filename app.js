@@ -6,9 +6,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const Product = require('./model/product');
-
-
+const productRoute = require('./routes/product');
 
 // Database connection ---
 main().then((res) => {
@@ -30,36 +28,13 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.engine('ejs', ejsMate);
 
 
-// routes ----
-
-// Home page ---
-app.get('/', async (req, res) => {
-    let productlist = await Product.find();
-    res.render('pages/home', { productlist });
-});
-
-// mens page ---
-app.get("/mens-footwear", async (req, res) => {
-    let productList = await Product.find({category : 'Men'});
-    res.render("pages/men", { productList });
-});
-
-// women page --
-app.get("/womens-footwear", async (req, res) => {
-    let productList = await Product.find({category : 'Women'});
-    res.render("pages/women", { productList });
-});
-
-// kids page --
-app.get("/kids-footwear", async (req, res) => {
-    let productList = await Product.find({category : 'Kids'});
-    res.render("pages/kids", { productList });
-});
+// Products routes ----
+app.use('/', productRoute);
 
 // cart page --
 app.get('/cart', (req, res) => {
     res.render('pages/cart');
-})
+});
 
 // server listening on port 8080 ---
 app.listen(8080);

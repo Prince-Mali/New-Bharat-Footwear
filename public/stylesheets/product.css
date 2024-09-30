@@ -1,148 +1,45 @@
-/* product-section */
-
 .main {
+    padding: 2rem 0;
+}
+
+.product {
     display: flex;
-    height: 100vh;
 }
 
-.filter-section-container {
-    width: 20vw !important;
-    padding: 1rem;
-    border-right: 1px solid rgba(0, 0, 0, 0.236);
+.img-box {
+    width: 40vw;
+    border-radius: 1rem;
 }
 
-.filter-section {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 1rem;
-}
-
-.filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.filter-header h5 {
-    padding-bottom: 0.8rem;
-}
-
-.filter-header button {
-    background-color: #fff;
-    border: none;
-    font-size: 1.4rem;
-}
-
-
-.filter-section h6 {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.236);
-}
-
-.main-container {
-    flex: 1;
-    overflow: auto;
-    padding: 1rem;
-}
-
-a {
-    text-decoration: none !important;
-}
-
-.cards {
-    display: flex;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.main-container::-webkit-scrollbar {
-    display: none !important;
-}
-
-.cards .card {
-    border: none;
-    width: 20vw;
-    margin-bottom: 1rem;
-    margin-right: 0.4rem;
-    opacity: 0.9;
-}
-
-.cards .card:hover {
-    opacity: 1;
-}
-
-.card img {
-    padding: 0.5rem;
+.img-box img {
+    width: 100%;
     aspect-ratio: 3/2;
     object-fit: contain;
+    padding: 1rem;
 }
 
-.card-body p {
-    margin: 0;
+.product-detail-container {
+    margin-left: 2rem;
 }
 
-.filter-btn {
-    display: none;
-    background-color: transparent;
-    width: 100%;
-    padding: 0.4rem;
-    margin: 1.5rem 0;
-    border: 1px solid rgba(63, 62, 62, 0.418);
-    font-size: 1.2rem;
-    font-weight: 400;
+.product-detail-container button {
+    padding: 0.8rem 2rem;
+    background-color: #2096A6;
+    border: none;
+    border-radius: 0.5rem;
 }
 
-.cross-btn {
-    display: none;
+.product-detail-container button:hover {
+    opacity: 0.8;
 }
 
+button a {
+    text-decoration: none !important;
+    color: #fff;
+}
 
 @media (max-width : 800px) {
-    .filter-section-container {
-        position: absolute;
-        z-index: 100;
-        background-color: #fff;
-        width: 70vw !important;
-        height: 100vh;
-        left: -70vw;
-    }
-
-    .filter-section {
-        padding: 0 1rem;
-    }
-
-    .main-container {
-        padding: 0;
-
-        h2 {
-            font-size: 2rem;
-        }
-    }
-
-    .cards {
-        justify-content:flex-start;
-        width: 100%;
-
-        a{
-            width: 50%;
-        }
-    }
-
-    .cards .card {
-        width: 100%;
-    }
-
-    .card img {
-        width: 100%;
-    }
-
-    .filter-btn {
-        display: block;
-    }
-    .cross-btn {
-        display: block;
+    .product {
+        flex-direction: column;
     }
 }
