@@ -1,0 +1,26 @@
+<%- layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/login.css">
+<body>
+    <div class="main row">
+        <div class="col col-4 p-4 mt-5 mb-5">
+            <form action="/login" method="post">
+                <div class="heading">
+                    <h3>Sing in</h3>
+                </div>
+                <div class="mt-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" type="text" id="username" placeholder="Enter Username" name="username">
+                </div>
+                <div class="mt-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" placeholder="Enter password" name="password">
+                </div>
+                <div class="mt-3">
+                    <input type="submit" class="btn btn-primary" value="Login">
+                </div>
+            </form>
+            <hr>
+            <h6>Don't have an account? <a href="/signup">Signup</a></h6>
+        </div>
+    </div>
+</body>

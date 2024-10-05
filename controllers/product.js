@@ -2,22 +2,22 @@ const Product = require('../model/product');
 
 module.exports.homePage = async (req, res) => {
     let productlist = await Product.find();
-    res.render('pages/home', { productlist });
+    res.render('pages/indexPage/home', { productlist });
 };
 
 module.exports.mensFootwear = async (req, res) => {
     let productList = await Product.find({category : 'Men'});
-    res.render("pages/men", { productList });
+    res.render("pages/indexPage/men", { productList });
 };
 
 module.exports.womenFootwear = async (req, res) => {
     let productList = await Product.find({category : 'Women'});
-    res.render("pages/women", { productList });
+    res.render("pages/indexPage/women", { productList });
 };
 
 module.exports.kidsFootwear = async (req, res) => {
     let productList = await Product.find({category : 'Kids'});
-    res.render("pages/kids", { productList });
+    res.render("pages/indexPage/kids", { productList });
 };
 
 module.exports.getFilteredProducts = async (req, res) => {
@@ -35,7 +35,7 @@ module.exports.getFilteredProducts = async (req, res) => {
 
     try {
         const productList = await Product.find(query);
-        res.render(`pages/${viewPath}`, { productList });
+        res.render(`pages/indexPage/${viewPath}`, { productList });
     }catch (err) {
         console.log(err);
     }
@@ -44,5 +44,5 @@ module.exports.getFilteredProducts = async (req, res) => {
 module.exports.getProductDetail = async (req, res) => {
     let { productId } = req.params;
     let product = await Product.findById(productId);
-    res.render('pages/product', { product });
+    res.render('pages/indexPage/product', { product });
 };

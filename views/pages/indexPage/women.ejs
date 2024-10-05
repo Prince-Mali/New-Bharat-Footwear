@@ -1,7 +1,8 @@
 <%- layout('/layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/products.css">
+
 <body>
-    <div class="main mt-3">
+    <div class="main mt-4">
         <div class="filter-section-container">
             <div class="row">
                 <!-- Filter Section -->
@@ -11,7 +12,7 @@
                         <button class="cross-btn"><i class="fa-solid fa-xmark"></i></button>
                     </div>
 
-                    <form action="/filtered/men" method="get">
+                    <form action="/filtered/women" method="get">
                         <!-- Price Filter -->
                         <h6>Price</h6>
 
@@ -38,10 +39,10 @@
                             <option value="8">8</option>
                         </select>
 
-                        <input type="text" value="Men" name="category" style="display: none;">
+                        <input type="text" value="Women" name="category" style="display: none;">
                     
                         <!-- Submit Button -->
-                        <button class="btn btn-primary mt-3" type="submit">Apply Filters</button>
+                        <button id="filter-btn" class="btn btn-primary mt-3" type="submit">Apply Filters</button>
                     </form>
                 </div>
             </div>
@@ -49,37 +50,10 @@
         <div class="main-container">
             <div class="content">
                 <div class="card-container">
-                    <h2>Men's Footwear</h2>
+                    <h2>Women's Footwear</h2>
                     <button class="filter-btn">FILTERS</button>
                     <div class="cards">
                         <% productList.forEach(function (product){%>
-                            <a href="/products/<%= product._id %>">
-                                <div class="card">
-                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-title"><b><%= product.title %></b></p>
-                                        <p class="card-text">&#8377;<%= product.price %></p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/products/<%= product._id %>">
-                                <div class="card">
-                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-title"><b><%= product.title %></b></p>
-                                        <p class="card-text">&#8377;<%= product.price %></p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/products/<%= product._id %>">
-                                <div class="card">
-                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-title"><b><%= product.title %></b></p>
-                                        <p class="card-text">&#8377;<%= product.price %></p>
-                                    </div>
-                                </div>
-                            </a>
                             <a href="/products/<%= product._id %>">
                                 <div class="card">
                                     <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">

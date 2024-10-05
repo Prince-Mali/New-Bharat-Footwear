@@ -1,0 +1,17 @@
+<div class="profile-container">
+    <div class="user-profile">
+        <img src="<%= user.image %>" alt="">    
+        <div class="user-profile-data">
+            <p><b><%= user.name %></b></p>
+            <p>Username : <%= user.username %></p>
+            <p>Email : <%= user.email %></p>
+            <p>Contact : +91 <%= user.contact %></p>
+            <% if(currUser.role === 'admin') { %>
+                <p>Role : Admin</p>
+            <% } %>
+        </div>
+        <a href="/profile/<%= currUser._id %>/update"><button>Edit Profile</button></a>
+    </div>
+</div>
+
+

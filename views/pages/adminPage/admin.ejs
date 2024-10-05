@@ -1,0 +1,44 @@
+<%- layout('/layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/adminPage.css">
+
+<body>
+    <p class="mt-2"><a href="/">Home</a> > <a href="/profile/<%= currUser._id %>">Profile</a> > Admin Dashboard</p>
+    <div class="main">
+        <div class="sidebar">
+            <ul>
+                <li><a class="sidebar-link" data-target="dashboard" href="">Dashboard</a></li>
+                <li><a class="sidebar-link" data-target="product-list" href="">Product List</a></li>
+                <li><a class="sidebar-link" data-target="add-product" href="">Add Product</a></li>
+                <li><a class="sidebar-link" data-target="category-list" href="">Category List</a></li>
+                <li><a class="sidebar-link" data-target="order-list" href="">Order List</a></li>
+                <li><a class="sidebar-link" data-target="all-user" href="">All User</a></li>
+                <li><a class="sidebar-link" data-target="report" href="">Report</a></li>
+            </ul>
+        </div>
+
+        <!-- Main content container -->
+        <div class="main-container">
+            <div class="profile-content" id="main-content">
+                <%- include('partialPages/dashboard') %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();                
+            let target = this.getAttribute('data-target');
+            console.log(target);
+
+            fetch(`/${target}`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-content').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading content:', error));
+            });
+        });
+    </script>
+
+</body>

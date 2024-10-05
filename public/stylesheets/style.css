@@ -5,6 +5,7 @@
 }
 
 body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -13,6 +14,18 @@ body {
 
 .container {
     flex: 1;
+}
+
+/* Navbar */
+.offcanvas {
+    padding: 0 0.5rem;
+}
+
+.protest-guerrilla-regular {
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    font-style: normal;
 }
 
 

@@ -25,11 +25,15 @@ const productSchema = new Schema({
     },
     color : {
         type : String,
-        required : true
+        // required : true
     },
     size : {
         type : Number,
-        required : true
+        // required : true
+    },
+    owner : {
+        type : Schema.Types.ObjectId,
+        ref : 'User'
     }
 });
 

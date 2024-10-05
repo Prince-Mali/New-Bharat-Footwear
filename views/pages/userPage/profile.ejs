@@ -1,0 +1,69 @@
+<%- layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<body>
+    <p class="mt-2 home-link"><a href="/">Home</a> > Profile</p>
+    <div class="main">
+        <div class="sidebar">
+            <ul>
+                <li><a class="sidebar-link" data-target="account-main" href="/account-main">Account</a></li>
+                <% if(currUser.role === 'admin') { %>
+                    <li><a href="/admin">Admin Dashboard</a></li>
+                <% } %>
+                <% if(currUser.role === 'user') { %>
+                    <li><a class="sidebar-link" data-target="orders" href="/orders">Orders</a></li>
+                    <li><a class="sidebar-link" data-target="wishlist" href="/wishlist">WishList</a></li>
+                    <li><a class="sidebar-link" data-target="addresses" href="/addresses">Address</a></li>
+                <% } %>
+                <li><a href="">Setting</a></li>
+                <li><a href="/logout">LOG OUT</a></li>
+            </ul>
+            <button class="sidebar-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <!-- Main content container ---- -->
+        <div class="main-container">
+            <button class="sidebar-btn"><i class="fa-solid fa-bars"></i></button>
+            <div class="profile-content" id="main-content">
+                <%- include('partialPages/acount-main') %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();                
+            let target = this.getAttribute('data-target');
+            console.log(target);
+
+            fetch(`/${target}`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-content').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading content:', error));
+            });
+        });
+    </script>
+
+    <script>
+        let sidebarBtn = document.querySelector('.sidebar-btn');
+        let sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
+        let sidebar = document.querySelector('.sidebar');
+        let sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        sidebarBtn.addEventListener('click', () => {
+            sidebar.style.left = 0;
+        });
+
+        sidebarCloseBtn.addEventListener('click', () => {
+            sidebar.style.left = '-80vw'
+        });
+
+        sidebarLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                sidebar.style.left = '-80vw';
+            });
+        })
+
+    </script>
+</body>

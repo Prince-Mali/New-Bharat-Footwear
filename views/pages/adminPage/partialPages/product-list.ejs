@@ -1,0 +1,30 @@
+<h1>Product list</h1>
+
+<div class="list-container mt-2">
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Product ID</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sale</th>
+                <th>Stock</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(product of productList) { %>
+                <tr>
+                    <td><img src="<%= product.imageUrl %>" alt="">&nbsp;<%= product.title %></td>
+                    <td><%= product._id %></td>
+                    <td><%= product.price %></td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>Out of Stock</td>
+                    <td><a href="/products/<%= product._id %>">view product</a></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

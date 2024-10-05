@@ -1,0 +1,85 @@
+<h1>Add product</h1>
+
+<div class="product-form">
+    <form action="/add-product" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Product name</label>
+                <input type="text" class="form-control" name="title" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product title!
+                </div>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Product Image</label>
+                <input type="file" class="form-control" name="imageUrl" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product Image!
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Category</label>
+                <input type="text" class="form-control" name="category" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product category!
+                </div>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Price</label>
+                <input type="text" class="form-control" name="price" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product price!
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Size</label>
+                <input type="number" class="form-control" name="size" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product size!
+                </div>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="" class="form-label">Color</label>
+                <input type="text" class="form-control" name="color" required>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product color!
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Description</label>
+            <textarea type="text" class="form-control" name="description" required></textarea>
+            <div class="valid-feedback">
+                Looks Good!
+            </div>
+            <div class="invalid-feedback">
+                Add product description!
+            </div>
+        </div>
+        <div class="mb-1">
+            <input type="submit" class="btn" value="Add product">
+        </div>
+    </form>
+</div>

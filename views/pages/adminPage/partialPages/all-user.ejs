@@ -1,0 +1,24 @@
+<h1>All users</h1>
+
+<div class="user-container">
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(user of userList) { %>
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.contact %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.role.toUpperCase() %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

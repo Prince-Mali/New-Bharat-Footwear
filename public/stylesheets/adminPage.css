@@ -1,0 +1,121 @@
+.main {
+    display: flex;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: aliceblue;
+    margin-right: 1rem;
+    padding: 1rem;
+    padding-top: 4rem;
+    border-radius: 0.5rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    align-content: center;
+    font-weight: 600;
+}
+
+.sidebar li:hover {
+    background-color: rgba(138, 185, 227, 0.707);
+    border-radius: 0.5rem;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #222;
+}
+
+.sidebar a:hover {
+    color: royalblue;
+}
+
+.main-container {
+    width: 80%;
+    background-color: aliceblue;
+    padding: 1rem;
+    padding-left: 2rem;
+    border-radius: 0.5rem;
+}
+
+/* admin dashboard */
+.card {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: none;
+    box-shadow: 0 0 0 1px white;
+}
+
+.card .icon-box {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.sales-icon {
+    background-color: #22C55E;
+}
+
+.income-icon {
+    background-color: orangered;
+}
+
+.order-icon {
+    background-color: royalblue;
+}
+
+.visitor-icon {
+    background-color: rgb(255, 200, 0);
+}
+
+/* product list */
+
+.list-container {
+
+}
+
+table {
+    width: 100%;
+    border-collapse: unset;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.5rem;
+}
+
+table img{
+    width: 3rem;
+    aspect-ratio: 3/2;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+/* Add product page */
+
+.product-form {
+    padding: 0 2rem;
+}
+
+.product-form .btn {
+    background-color: #45ADBB;
+    color: #fff;
+    font-weight: 600;
+}
