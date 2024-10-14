@@ -17,6 +17,22 @@ body {
 }
 
 /* Navbar */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .brand-name {
+        font-size: 1rem;
+        line-height: 1rem;
+        margin-left: 0.3rem;
+        font-weight: 800;
+    }
+    .brand-slogan {
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+}
+
 .offcanvas {
     padding: 0 0.5rem;
 }
@@ -28,11 +44,16 @@ body {
     font-style: normal;
 }
 
+.sidebar-btn {
+    display: none;
+}
+
 
 /* footer */
 .footer-container {
     display: flex;
     justify-content: space-evenly;
+    border-bottom: 1px solid black;
 }
 
 .footer-container a {

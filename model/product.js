@@ -10,30 +10,35 @@ const productSchema = new Schema({
         type : String,
         required : true
     },
+    imageUrl : {
+        type : String,
+        required : true
+    },
     price : {
         type : Number,
         required : true
     },
     category : {
         type : String,
-        required : true,
-        enum : ['Men', 'Women', 'Kids']
-    },
-    imageUrl : {
-        type : String,
+        enum : ['Men', 'Women', 'Kids'],
         required : true
+    },
+    categories : {
+        type : String,
+        enum : ['sneakers', 'boots', 'sandals', 'loafer', 'sport shoes', 'flip-flops']
     },
     color : {
         type : String,
-        // required : true
+        required : true
     },
     size : {
         type : Number,
-        // required : true
+        required : true
     },
-    owner : {
-        type : Schema.Types.ObjectId,
-        ref : 'User'
+    quantity : {
+        type : Number,
+        default : 0,
+        required : true
     }
 });
 

@@ -7,6 +7,7 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const User = require('./model/user');
+const Visitor = require('./model/visitor');
 const productRoute = require('./routes/product');
 const userRoute = require('./routes/user');
 const profileRoute = require('./routes/profile');
@@ -18,6 +19,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const flash = require('connect-flash');
 const { isLoggedIn } = require('./middleware');
+const methodOverride = require('method-override');
 
 // Database connection ---
 main().then((res) => {
@@ -31,6 +33,8 @@ async function main() {
 // middelwares
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
+
+app.use(methodOverride('_method')); // method-override
 
 
 // Setting up EJS views and static files
@@ -83,6 +87,22 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     res.locals.currUser = req.user;
+    next();
+});
+
+// visitor count middleware ----
+app.use(async(req, res, next) => {
+    if(!req.session.isNewVisitor) {
+        req.session.isNewVisitor = true;
+
+        let visitorRecord = await Visitor.findOne();
+        if(!visitorRecord) {
+            visitorRecord = new Visitor({visitorCount : 1 });
+        } else {
+            visitorRecord.visitorCount += 1;
+        }
+        await visitorRecord.save();
+    }
     next();
 });
 

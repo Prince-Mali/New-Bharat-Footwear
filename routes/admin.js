@@ -19,6 +19,8 @@ router.get('/add-product', isLoggedIn, isAdmin, adminControllers.newProductForm)
 
 router.post('/add-product', isLoggedIn, isAdmin, upload.single('imageUrl'), adminControllers.newProduct);
 
+router.delete('/product/:id', isLoggedIn, isAdmin, adminControllers.deleteProduct);
+
 router.get('/category-list', isLoggedIn, isAdmin, adminControllers.categoryList);
 
 router.get('/order-list', isLoggedIn, isAdmin, adminControllers.orderList);

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/adminPage.css">
 
 <body>
-    <p class="mt-2"><a href="/">Home</a> > <a href="/profile/<%= currUser._id %>">Profile</a> > Admin Dashboard</p>
+    <p class="mt-2 ps-2"><a href="/">Home</a> > <a href="/profile/<%= currUser._id %>">Profile</a> > Admin Dashboard</p>
     <div class="main">
         <div class="sidebar">
             <ul>
@@ -14,6 +14,7 @@
                 <li><a class="sidebar-link" data-target="all-user" href="">All User</a></li>
                 <li><a class="sidebar-link" data-target="report" href="">Report</a></li>
             </ul>
+            <button class="sidebar-close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
         <!-- Main content container -->
@@ -23,6 +24,7 @@
             </div>
         </div>
     </div>
+
 
     <script>
         document.querySelectorAll('.sidebar-link').forEach(link => {
@@ -41,4 +43,25 @@
         });
     </script>
 
+    <script>
+        let sidebarBtn = document.querySelector('.sidebar-btn');
+        let sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
+        let sidebar = document.querySelector('.sidebar');
+        let sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        sidebarBtn.addEventListener('click', () => {
+            sidebar.style.right = 0;
+        });
+
+        sidebarCloseBtn.addEventListener('click', () => {
+            sidebar.style.right = '-60vw'
+        });
+
+        sidebarLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                sidebar.style.right = '-60vw';
+            });
+        })
+
+    </script>
 </body>

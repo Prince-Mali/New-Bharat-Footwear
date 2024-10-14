@@ -1,7 +1,7 @@
 <%- layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/profile.css">
 <body>
-    <p class="mt-2 home-link"><a href="/">Home</a> > Profile</p>
+    <p class="mt-2 ps-2"><a href="/">Home</a> > Profile</p>
     <div class="main">
         <div class="sidebar">
             <ul>
@@ -21,7 +21,6 @@
         </div>
         <!-- Main content container ---- -->
         <div class="main-container">
-            <button class="sidebar-btn"><i class="fa-solid fa-bars"></i></button>
             <div class="profile-content" id="main-content">
                 <%- include('partialPages/acount-main') %>
             </div>
@@ -52,16 +51,16 @@
         let sidebarLinks = document.querySelectorAll('.sidebar-link');
 
         sidebarBtn.addEventListener('click', () => {
-            sidebar.style.left = 0;
+            sidebar.style.right = 0;
         });
 
         sidebarCloseBtn.addEventListener('click', () => {
-            sidebar.style.left = '-80vw'
+            sidebar.style.right = '-60vw'
         });
 
         sidebarLinks.forEach((link) => {
             link.addEventListener('click', () => {
-                sidebar.style.left = '-80vw';
+                sidebar.style.right = '-60vw';
             });
         })
 
