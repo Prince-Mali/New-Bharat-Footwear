@@ -6,7 +6,7 @@
                 <i class="fa-solid fa-bag-shopping"></i>
             </div>
             <div class="card-body">
-                <h5 class="card-text">34,590</h5>
+                <h5 class="card-text"><%= totalSales %></h5>
                 <p class="card-title">Total Sales</p>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <i class="fa-solid fa-dollar-sign"></i>
             </div>
             <div class="card-body">
-                <h5 class="card-text">$ 37,802</h5>
+                <h5 class="card-text">&#8377; <%= totalIncome %></h5>
                 <p class="card-title">Total Income</p>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="card-body">
-                <h5 class="card-text">502</h5>
+                <h5 class="card-text"><%= totalOrders %></h5>
                 <p class="card-title">Orders</p>
             </div>
         </div>
@@ -39,9 +39,11 @@
                 <i class="fa-solid fa-users"></i>
             </div>
             <div class="card-body">
-                <h5 class="card-text"><%= totalVisitors %></h5>
+                <h5 class="card-text"><%= totalVisitors.visitorCount %></h5>
                 <p class="card-title">Total Visitors</p>
             </div>
         </div>
     </div>
 </div>
+<hr>
+

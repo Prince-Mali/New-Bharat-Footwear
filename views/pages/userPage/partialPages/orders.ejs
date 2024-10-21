@@ -1,3 +1,16 @@
 <div class="order-container">
-    <h1>Your orders...</h1>
+    <h1>Your Orders</h1>
+    <div class="">
+        <table>
+            <tr>
+                <th>Product id</th>
+                <th>Price</th>
+                <th>Quantity </th>
+            </tr>
+            <% orderList.forEach(order => { %>
+                <tr>
+                    <td><%= order._id %></td>
+            <% }); %>
+        </table>
+    </div>
 </div>

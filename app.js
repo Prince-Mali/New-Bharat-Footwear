@@ -12,6 +12,8 @@ const productRoute = require('./routes/product');
 const userRoute = require('./routes/user');
 const profileRoute = require('./routes/profile');
 const adminRoute = require('./routes/admin');
+const cartRoute = require('./routes/cart');
+const orderRoute = require('./routes/order');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -20,6 +22,7 @@ const LocalStrategy = require('passport-local');
 const flash = require('connect-flash');
 const { isLoggedIn } = require('./middleware');
 const methodOverride = require('method-override');
+const cart = require('./routes/cart');
 
 // Database connection ---
 main().then((res) => {
@@ -118,11 +121,11 @@ app.use('/', profileRoute);
 // Admin routes ---
 app.use('/', adminRoute);
 
-// cart page --
-app.get('/cart', isLoggedIn, (req, res) => {
-    res.render('pages/indexPage/cart');
-});
+// Cart routes --
+app.use('/', cartRoute);
 
+// order routes --
+app.use('/', orderRoute);
 
 // Error handler ---
 app.use((err, req, res, next) => {

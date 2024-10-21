@@ -1,4 +1,5 @@
 const Product = require('../model/product');
+const Cart = require('../model/cart');
 
 module.exports.homePage = async (req, res) => {
     let productlist = await Product.find();
@@ -43,6 +44,17 @@ module.exports.getFilteredProducts = async (req, res) => {
 
 module.exports.getProductDetail = async (req, res) => {
     let { productId } = req.params;
+    let userId = req.user._id;
+
     let product = await Product.findById(productId);
-    res.render('pages/indexPage/product', { product });
+    let cart = await Cart.findOne({ userId });
+    
+    if (!cart) {
+        cart = new Cart({ userId, items: [] });
+    }
+    await cart.save();
+
+    const isInCart = cart.items.find(item => item.product == productId);
+    // console.log(isInCart);
+    res.render('pages/indexPage/product', { product, isInCart });
 };

@@ -8,23 +8,58 @@
             </div>
             <div class="product-detail-container">
                 <h1><%= product.title %></h1>
+                <p class="total-ratings" style="border: 1px solid black; display: inline;">3.9<i class="fa-solid fa-star"></i> &nbsp;46 Ratings</p>
+
+                <hr>
+
                 <p>&#8377;<%= product.price %>/-</p>
                 <p>Color : <%= product.color %></p>
                 <p>Size : <%= product.size %></p>
-                <div class="">
-                    <button><a href="">Add to Cart</a></button>
-                    <button><a href="">Buy Now</a></button>
+
+                <!-- ------- -->
+
+                <div>
+                    <div class="button-group">
+                        <% if(product.quantity === 0) { %>
+                            <button class="btn btn-danger" disabled>Out of Stock</button>
+                        <% } else { %>
+                            <% if(!isInCart) { %>
+                                <form action="/cart/add/<%= product._id %>" method="post" id="add-cart-form">
+                                    <button type="submit"><i class="fa-solid fa-cart-arrow-down"></i>&nbsp;&nbsp;Add to Cart</button>
+                                </form>
+                            <% } else { %>
+                                <button class="cart-btn display" id="cart-btn"><a href="/cart">Go to Cart &nbsp; <i class="fa-solid fa-arrow-right"></i></a></button>
+                            <% } %>
+                        <% } %>
+
+                        <form action="/wishlist/add/<%= product._id %>" method="post">
+                            <button type="submit"><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;WISHLIST</button>
+                        </form>
+                    </div>
+
                     <p><i class="fa-solid fa-shield-halved"></i>&nbsp;<b style="font-weight: 600;">Safe and Secure payments. 100% Authentic products</b></p>
                 </div>
-                <p>Description : <%= product.description %></p>
+                
                 <hr>
+
                 <div class="product-detail">
-                    <p>Ocation : Casual</p>
-                    <p></p>
+                    <h5>Product Details <i class="fa-regular fa-file-lines"></i></h5>
+                    <p>
+                        <%= product.description %>
+                    </p>
                 </div>
-            </div>
-            <div class="share-product">
-                <a href=""><i class="fa-solid fa-share"></i></a>
+
+                <hr>
+
+                <div class="product-reviews">
+                    <h4>Customer Reviews (13)</h4>
+                    <div class="reviews">
+                        <p>review1</p>
+                        <p>review2</p>
+                        <p>review3</p>
+                        <p>review4</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

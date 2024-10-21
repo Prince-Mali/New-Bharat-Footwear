@@ -1,36 +1,79 @@
 <%- layout('/layouts/boilerplate') %>
-
-<style>
-    .empty {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 50px;
-    }
-
-    .empty img {
-        width: 150px;
-    }
-
-    button {
-        border: none;
-        background-color: #259fafda;
-        padding: 0.4rem 0.8rem;
-        border-radius: 5px;
-
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
-    }
-
-</style>
+<link rel="stylesheet" href="/stylesheets/cart.css">
 
 <body>
-    <div class="empty">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727189481/cart-icon_qnrb9j.webp" alt="">
-        <h4>Your Cart is empty</h4>
-        <p>Looks Like You haven't made Your Choice Yet!</p>
-        <button><a href="/">Start Shopping</a></button>
-    </div>
+    <% if(cart && cart.items.length) { %>
+        <div class="cart-container">
+            <div class="main">
+                <h4>My Cart <span>(<%= cart.totalQuantity %> items)</span></h4>
+                <div class="heading">
+                    <p id="item-detail">Item(s) Details</p>
+                    <p>Quantity</p>
+                    <p>Amount</p>
+                </div>
+                <div class="item-group">
+                    <% cart.items.forEach(item => { %>
+                        <div class="item">
+                            <div class="product">
+                                <a href="/products/<%= item.product._id %>"><img src="<%= item.product.imageUrl %>"></a>
+                                <div class="product-detail">
+                                    <p><%= item.product.title %></p>
+                                    <p>&#8377;<%= item.product.price %></p>
+                                    <div class="action-button">
+                                        <button>WISHLIST</button>
+                                        <form action="/cart/remove/<%= item.product._id %>" method="post">
+                                            <button type="submit">REMOVE</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qauntity">
+                                <% if(item.product.quantity === 0) { %>
+                                    <p style="color: red;">Out of Stock</p>
+                                <% } else { %>
+                                    <form id="cartForm-<%= item.product._id %>" action="/cart/update/<%= item.product._id %>" method="post">
+                                        <select class="form-select" onchange="document.getElementById('cartForm-<%= item.product._id %>').submit()" name="quantity">
+                                            <option value="1" <%= item.quantity === 1 ? 'selected' : '' %>>1</option>
+                                            <option value="2" <%= item.quantity === 2 ? 'selected' : '' %>>2</option>
+                                            <option value="3" <%= item.quantity === 3 ? 'selected' : '' %>>3</option>
+                                            <option value="4" <%= item.quantity === 4 ? 'selected' : '' %>>4</option>
+                                        </select>
+                                    </form>
+                                <% } %>
+                            </div>
+                            <div class="amount">
+                                <p>&#8377; <%= item.price %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="item-total">
+                    <div>Item(s) Total</div>
+                    <div>&#8377;<%= cart.totalPrice %></div>
+                </div>
+                <div class="delivery-total">
+                    <div>Approx. Delivery Charge</div>
+                    <div style="color: green;">Free</div>
+                </div>
+                <div class="total-amount">
+                    <div style="line-height: 1rem;">
+                        <div>Amount Payable</div>
+                        <span style="font-size: 0.6rem;">Price may changed based on shipping address</span>
+                    </div>
+                    <div class="">&#8377;<%= cart.totalPrice %></div>
+                </div>
+                <form action="/checkout">
+                    <button type="submit">CHECKOUT</button>
+                </form>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="empty">
+            <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1727189481/cart-icon_qnrb9j.webp" alt="">
+            <h4>Your Cart is empty</h4>
+            <button><a href="/">Start Shopping</a></button>
+        </div>
+    <% } %>
 </body>

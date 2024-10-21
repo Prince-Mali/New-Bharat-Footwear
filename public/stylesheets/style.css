@@ -44,12 +44,20 @@ body {
     font-style: normal;
 }
 
-.sidebar-btn {
-    display: none;
+/* alert-info */
+@media(max-width : 800px) {
+    .alert-info {
+        width: 100% !important;
+        margin: 0 !important;
+    }
 }
 
-
 /* footer */
+footer {
+    border-top: 1px solid rgba(67, 66, 66, 0.326);
+    margin-top: 1rem;
+}
+
 .footer-container {
     display: flex;
     justify-content: space-evenly;

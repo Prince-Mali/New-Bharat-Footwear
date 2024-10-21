@@ -1,0 +1,99 @@
+<% layout('layouts/boilerplate') %>
+<style>
+    footer {
+        display: none;
+    }
+    .product-form {
+    padding: 0 2rem;
+    }
+
+    .product-form .btn {
+        background-color: #45adbb;
+        color: #fff;
+        font-weight: 600;
+    }
+</style>
+
+<body>
+    <h1>Edit Product</h1>
+    <div class="product-form">
+        <form action="/<%= product._id %>/edit" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="" class="form-label">Product Title</label>
+                    <input type="text" class="form-control" name="title" value="<%= product.title %>" disabled>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="" class="form-label">Product Image</label>
+                    <input type="file" class="form-control" name="imageUrl">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="" class="form-label">Category</label>
+                    <input type="text" class="form-control" value="<%= product.category %>" disabled>
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="categories" class="form-label">Categories</label>
+                    <input type="text" class="form-control" value="<%= product.categories %>" disabled>
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="color" class="form-label">Color</label>
+                    <select class="form-select" name="color" id="color" disabled>
+                        <option>Select Shoe Color</option>
+                        <option value="White" <%= product.color === 'White' ? 'selected' : '' %>>White</option>
+                        <option value="Black" <%= product.color === 'Black' ? 'selected' : '' %>>Black</option>
+                        <option value="Brown" <%= product.color === 'Brown' ? 'selected' : '' %>>Brown</option>
+                        <option value="Yellow" <%= product.color === 'Yellow' ? 'selected' : '' %>>Yellow</option>
+                        <option value="Pink" <%= product.color === 'Pink' ? 'selected' : '' %>>Pink</option>
+                    </select>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Add product color!
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="" class="form-label">Price</label>
+                    <input type="number" class="form-control" name="price" min="100" value="<%= product.price %>" required>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Add product price!
+                    </div>
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="" class="form-label">Size</label>
+                    <input type="number" class="form-control" name="size" min="6" value="<%= product.size %>" required>
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Add product size!
+                    </div>
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label class="form-label" for="quantity">Quantity</label>
+                    <input class="form-control" type="number" name="quantity" min="10" value="<%= product.quantity %>" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Description</label>
+                <textarea type="text" class="form-control" name="description" required><%= product.description %></textarea>
+                <div class="valid-feedback">
+                    Looks Good!
+                </div>
+                <div class="invalid-feedback">
+                    Add product description!
+                </div>
+            </div>
+            <div class="mb-1">
+                <input type="submit" class="btn" value="Add product">
+            </div>
+        </form>
+    </div>
+</body>

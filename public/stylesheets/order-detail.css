@@ -1,0 +1,162 @@
+/* footer */
+.footer-container {
+    display: none;
+}
+
+/* main-div */
+.main {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background-color: #F2F7FB;
+}
+
+.page-title {
+    font-weight: 800;
+}
+
+/* order-detail */
+.order-details {
+    display: flex;
+    width: 100%;
+    padding: 0.5rem;
+    column-gap: 2rem;
+}
+
+.order-details h4 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    background-color: #F8F9FC;
+    border-radius: 0.8rem;
+}
+
+/* section-1 */
+.section-1{
+    width: 70%;
+    /* padding: 1rem; */
+    /* background-color: beige; */
+}
+
+/* item-section */
+.section-1 .item-section {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F8F9FC;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.item:hover {
+    background-color: #e7eaf4;
+}
+
+.item .item-image {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    img {
+        width: 100px;
+        /* height: 100px; */
+        aspect-ratio: 3/2;
+        object-fit: contain;
+    }
+}
+
+.item .item-detail {
+    display: flex;
+    width: 70%;
+    justify-content: space-evenly;
+}
+
+/* summary-section */
+.summary-section {
+    display: flex;
+    margin-top: 2rem;
+    column-gap: 2rem;
+}
+
+.summary-section p {
+    padding: 0.5rem;
+    margin: 0;
+}
+
+/* order-total */
+.order-total {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+}
+
+/* payment-info */
+.payment-info {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    height: fit-content;
+}
+
+.order-status {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    height: fit-content;
+    p {
+        font-weight: 600;
+        width: fit-content;
+        border-radius: 0.5rem;
+    }
+}
+
+#Pending {
+    color: orange;
+    background-color: rgba(239, 179, 68, 0.334);
+}
+
+#Shipped {
+    color: royalblue;
+    background-color: rgba(147, 168, 233, 0.334);
+}
+
+#Delivered {
+    color: green;
+    background-color: rgba(179, 233, 179, 0.334);
+}
+
+#Cancelled {
+    color: red;
+    background-color: rgba(232, 142, 142, 0.334);
+}
+
+/* section-2 */
+.section-2{
+    width: 30%;
+    /* padding: 1rem; */
+    /* background-color: beige; */
+}
+
+.section-2 p {
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.section-2 .customer-info {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.shipping-address {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}

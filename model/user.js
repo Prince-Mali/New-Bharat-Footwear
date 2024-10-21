@@ -6,6 +6,10 @@ const userSchema = new Schema({
     name : {
         type : String,
     },
+    image : {
+        type : String,
+        default : 'https://res.cloudinary.com/dp7o3qopm/image/upload/v1728058954/profile_ldhtrc.jpg'
+    },
     email : {
         type : String,
         required : true
@@ -20,10 +24,6 @@ const userSchema = new Schema({
     },
     address : {
         type : String,
-    },
-    image : {
-        type : String,
-        default : 'https://res.cloudinary.com/dp7o3qopm/image/upload/v1728058954/profile_ldhtrc.jpg'
     }
 });
 

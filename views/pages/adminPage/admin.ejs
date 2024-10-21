@@ -3,16 +3,17 @@
 
 <body>
     <p class="mt-2 ps-2"><a href="/">Home</a> > <a href="/profile/<%= currUser._id %>">Profile</a> > Admin Dashboard</p>
+    <button class="sidebar-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
     <div class="main">
         <div class="sidebar">
             <ul>
                 <li><a class="sidebar-link" data-target="dashboard" href="">Dashboard</a></li>
                 <li><a class="sidebar-link" data-target="product-list" href="">Product List</a></li>
                 <li><a class="sidebar-link" data-target="add-product" href="">Add Product</a></li>
-                <li><a class="sidebar-link" data-target="category-list" href="">Category List</a></li>
+                <!-- <li><a class="sidebar-link" data-target="category-list" href="">Category List</a></li> -->
                 <li><a class="sidebar-link" data-target="order-list" href="">Order List</a></li>
                 <li><a class="sidebar-link" data-target="all-user" href="">All User</a></li>
-                <li><a class="sidebar-link" data-target="report" href="">Report</a></li>
+                <!-- <li><a class="sidebar-link" data-target="report" href="">Report</a></li> -->
             </ul>
             <button class="sidebar-close-btn"><i class="fa-solid fa-xmark"></i></button>
         </div>
@@ -62,6 +63,5 @@
                 sidebar.style.right = '-60vw';
             });
         })
-
     </script>
 </body>

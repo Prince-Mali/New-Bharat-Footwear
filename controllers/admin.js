@@ -1,17 +1,15 @@
 const Product = require('../model/product');
 const User = require('../model/user');
-const Visitor = require('../model/visitor');
+const Order = require('../model/order');
 
 module.exports.adminDashboard = async (req, res) => {
-    let visitorRecord = await Visitor.findOne();
-    let totalVisitors = visitorRecord ? visitorRecord.visitorCount : 0;
-    res.render('pages/adminPage/admin', { totalVisitors } );
+    const { totalSales, totalIncome, totalOrders, totalVisitors } = req.dataMatrics;
+    res.render('pages/adminPage/admin', { totalSales, totalIncome, totalOrders, totalVisitors });
 };
 
 module.exports.dashboard = async (req, res) => {
-    let totalVisitors = await Visitor.findOne();
-    totalVisitors = totalVisitors.visitorCount;
-    res.render('pages/adminPage/partialPages/dashboard', { totalVisitors });
+    const { totalSales, totalIncome, totalOrders, totalVisitors } = req.dataMatrics;
+    res.render('pages/adminPage/partialPages/dashboard', { totalSales, totalIncome, totalOrders, totalVisitors });
 };
 
 module.exports.productList = async (req, res) => {
@@ -31,7 +29,7 @@ module.exports.newProduct = async (req, res) => {
     newProduct.owner = req.user._id;
     
     await newProduct.save();
-    console.log(newProduct);
+    // console.log(newProduct);
     res.redirect('/admin');
 };
 
@@ -42,12 +40,13 @@ module.exports.deleteProduct = async (req, res) => {
     res.redirect('/admin');
 };
 
-module.exports.categoryList = (req, res) => {
+module.exports.categoryList = async(req, res) => {
     res.render('pages/adminPage/partialPages/category-list');
 };
 
-module.exports.orderList = (req, res) => {
-    res.render('pages/adminPage/partialPages/order-list');
+module.exports.orderList = async(req, res) => {
+    let orderList = await Order.find({});
+    res.render('pages/adminPage/partialPages/order-list', { orderList });
 };
 
 module.exports.allUserList = async (req, res) => {

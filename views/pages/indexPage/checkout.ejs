@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/checkout.css">
+
+<body>
+    <div class="main">
+        <div class="checkout-form">
+            <form action="/checkout" method="post">
+                <div class="address-section">
+                    <div class="contact-detail">
+                        <p>CONTACT DETAIL</p>
+                        <div class="row">
+                            <div class="mb-3 col-4">
+                                <input type="text" class="form-control" placeholder="Name*" value="<%= currUser.name %>" name="name">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <input type="text" class="form-control" placeholder="Mobile No*" value="<%= currUser.contact %>" name="contact">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="address">
+                        <p>ADDRESS</p>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Address (House No, Building, Street, Area)*" value="<%= currUser.address %>" name="street">
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-4">
+                                <input type="text" class="form-control" placeholder="City*" name="city">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <input type="text" class="form-control" placeholder="State*" name="state">
+                            </div>
+                            <div class="mb-3 col-4">
+                                <input type="number" class="form-control" placeholder="Pin Code*" name="pincode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="payment-section">
+                    <p>CHOOSE PAYMENT MODE</p>
+                    <div class="col-4 mb-3">
+                        <label class="form-label" for="paymentMethod">Payment Method</label>
+                        <select class="form-select" id="paymentMethod" name="paymentMethod" name="paymentMethod" required>
+                            <option value="cash_on_delivery">Cash On Delivery</option>
+                            <!-- <option value="credit_card">Credit Card</option>
+                            <option value="debit_card">Debit Card</option>
+                            <option value="paypal">PayPal</option> -->
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-outline-primary" type="submit">Place Order</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="sidebar">
+            <div class="item-total">
+                <div>Item(s) Total</div>
+                <div>&#8377;<%= cart.totalPrice %></div>
+            </div>
+            <div class="delivery-total">
+                <div>Approx. Delivery Charge</div>
+                <div style="color: green;">Free</div>
+            </div>
+            <div class="total-amount">
+                <div style="line-height: 1rem;">
+                    <div>Amount Payable</div>
+                    <span style="font-size: 0.6rem;">INCLUSIVE OF ALL TAXES</span>
+                </div>
+                <div class="">&#8377;<%= cart.totalPrice %></div>
+            </div>
+        </div>
+    </div>
+</body>
