@@ -37,18 +37,28 @@ const orderSchema = new Schema({
         state : {type : String, required : true},
         pincode : {type : String, required : true}
     },
-    paymentMethod : {
+    date : {
+        type : Date,
+        default : Date.now()
+    },
+    paymentStatus : {
         type : String,
-        enum : ['cash_on_delivery', 'credit_card', 'debit_card'],
+        enum : ['Paid', 'Pending', 'Failed'],
+        default : 'Pending',
+        required : true
+    },
+    paymentMode : {
+        type : String,
         required : true
     },
     orderStatus : {
         type : String,
+        enum : ['Pending', 'Shipped', 'Delivered', 'Canceled'],
         default : 'Pending'
     },
-    date : {
-        type : Date,
-        default : Date.now()
+    txnId : {
+        type : String,
+        required : true
     }
 });
 

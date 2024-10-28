@@ -3,6 +3,8 @@ const Visitor = require('./model/visitor');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()) {
+        req.session.redirectURl = req.get('Referer');
+        // console.log(req.session.redirectURl);
         return next();
     } else {
         req.flash('error', 'You must be logged in to view this page.');

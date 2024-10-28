@@ -31,10 +31,14 @@
                                 <button class="cart-btn display" id="cart-btn"><a href="/cart">Go to Cart &nbsp; <i class="fa-solid fa-arrow-right"></i></a></button>
                             <% } %>
                         <% } %>
-
-                        <form action="/wishlist/add/<%= product._id %>" method="post">
-                            <button type="submit"><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;WISHLIST</button>
-                        </form>
+                        
+                        <% if(!isInWishlist) { %>
+                            <form action="/wishlist/add/<%= product._id %>" method="post">
+                                <button type="submit"><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;WISHLIST</button>
+                            </form>
+                        <% } else { %>
+                            <button><a href="/wishlist/remove/<%= product._id %>"><i class="fa-solid fa-heart"></i>&nbsp;&nbsp;WISHLISTED</a></button>
+                        <% } %>
                     </div>
 
                     <p><i class="fa-solid fa-shield-halved"></i>&nbsp;<b style="font-weight: 600;">Safe and Secure payments. 100% Authentic products</b></p>
@@ -52,13 +56,24 @@
                 <hr>
 
                 <div class="product-reviews">
-                    <h4>Customer Reviews (13)</h4>
-                    <div class="reviews">
-                        <p>review1</p>
-                        <p>review2</p>
-                        <p>review3</p>
-                        <p>review4</p>
-                    </div>
+                    <h4 class="mb-3">Customer Reviews (<%= productReviews.length %>)</h4>
+                    <% if(productReviews && productReviews.length ) { %>
+                        <div class="reviews">
+                            <% productReviews.forEach(review => { %>
+                                <p>
+                                    <span style="border: 0.5px solid black; padding: 0.1rem;"><%= review.rating %>&nbsp;<i class="fa-solid fa-star"></i></span>
+                                    &nbsp;<%= review.comment %>
+                                </p>
+                                <p>
+                                    <span><%= review.userId.name %></span>&nbsp;|
+                                    <%= review.date.toString().split(' ').slice(1,4).join(' ') %>
+                                </p>
+                                <hr>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <p>No Reviews Yet</p>
+                    <% } %>
                 </div>
             </div>
         </div>

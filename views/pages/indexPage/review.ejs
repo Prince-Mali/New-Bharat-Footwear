@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/rating.css">
+<style>
+    .footer-container {
+        display: none;
+    }
+    .container {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: rgba(220, 220, 220, 0.592);
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .main {
+        height: 100%;
+        min-width: 60%;
+        padding: 0 1rem;
+    }
+    img {
+        width: 100px;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+    }
+    .btn {
+        background-color: #31B3C0;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <h4 class="mb-3"><b>Write Review</b></h4>
+        <div class="product-detail" style="display: flex; column-gap: 1rem;">
+            <div class="img">
+                <img src="<%= product.imageUrl %>" alt="">
+            </div>
+            <div class="titel"><p><%= product.title %></p></div>
+        </div>
+        <hr>
+        <div class="review-form">
+            <form action="/review/<%= product._id %>/add" method="post" class="form needs-validation" novalidate>
+                <div class="mt-3 col-md-4">
+                    <label for="" class="mb-2"><strong>Overall Rating</strong></label>
+                    <fieldset class="starability-heart">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="rating" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="rating" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="rating" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="rating" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="rating" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <label for="comment" class="form-label"><strong>Add Your Valuable Review</strong></label>
+                    <textarea type="text" name="comment" id="comment" class="form-control" required></textarea>
+                    <div class="invalid-feedback">
+                        please add some comment for review!
+                    </div>
+                </div>
+                <input type="submit" value="Post review" class="btn">
+            </form>
+        </div>
+    </div>
+</body>
+

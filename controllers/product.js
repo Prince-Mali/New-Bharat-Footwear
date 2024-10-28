@@ -1,5 +1,7 @@
 const Product = require('../model/product');
 const Cart = require('../model/cart');
+const Wishlist = require('../model/wishlist');
+const Review = require('../model/review');
 
 module.exports.homePage = async (req, res) => {
     let productlist = await Product.find();
@@ -47,14 +49,24 @@ module.exports.getProductDetail = async (req, res) => {
     let userId = req.user._id;
 
     let product = await Product.findById(productId);
+    let productReviews = await Review.find({productId}).populate('userId');
+
+    // check isincart product ---
     let cart = await Cart.findOne({ userId });
-    
     if (!cart) {
         cart = new Cart({ userId, items: [] });
     }
     await cart.save();
-
     const isInCart = cart.items.find(item => item.product == productId);
-    // console.log(isInCart);
-    res.render('pages/indexPage/product', { product, isInCart });
+
+    // check isinwishlist product ---
+    let wishlist = await Wishlist.findOne({ userId });
+    if(!wishlist) {
+        wishlist = new Wishlist({ userId });
+    }
+    await wishlist.save();
+    const isInWishlist = await wishlist.products.find(product => product.productId == productId);
+
+    // rendering product detail ---
+    res.render('pages/indexPage/product', { product, isInCart, isInWishlist, productReviews });
 };

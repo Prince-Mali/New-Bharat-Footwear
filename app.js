@@ -13,16 +13,18 @@ const userRoute = require('./routes/user');
 const profileRoute = require('./routes/profile');
 const adminRoute = require('./routes/admin');
 const cartRoute = require('./routes/cart');
+const wishlistRoute = require('./routes/wishlist');
 const orderRoute = require('./routes/order');
+const paymentRoute = require('./routes/payment');
+const reviewRoute = require('./routes/review');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const flash = require('connect-flash');
-const { isLoggedIn } = require('./middleware');
 const methodOverride = require('method-override');
-const cart = require('./routes/cart');
+const crypto = require('crypto');
 
 // Database connection ---
 main().then((res) => {
@@ -65,11 +67,13 @@ let sessionOptions = {
     store : store,
     secret : process.env.SECRET,
     resave : false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie : {
         expires : Date.now() + 7*24*60*60*1000,
         maxAge : 7*24*60*60*1000,
-        httpOnly : true
+        httpOnly : true,
+        secure: false,
+        sameSite : 'Lax'
     }
 }
 
@@ -124,8 +128,23 @@ app.use('/', adminRoute);
 // Cart routes --
 app.use('/', cartRoute);
 
+// Wishlist routes --
+app.use('/', wishlistRoute);
+
 // order routes --
 app.use('/', orderRoute);
+
+// payment routes --
+app.use('/', paymentRoute);
+
+// review routes --
+app.use('/', reviewRoute);
+
+// // hash ---
+// function generatePaymentHash(paymentData) {
+//     const hashString = `${process.eventNames.PAY_API_KEY}|${paymentData.txnid}|${paymentData.amount}|${paymentData.productinfo}|${paymentData.firstname}|${paymentData.email}|||||||||||${process.env.PAYU_SALT_256BIT}`;
+//     return crypto.createHash('sha512').update(hashString).digest('hex');
+// }
 
 // Error handler ---
 app.use((err, req, res, next) => {

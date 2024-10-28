@@ -4,33 +4,33 @@
 <body>
     <div class="main">
         <div class="checkout-form">
-            <form action="/checkout" method="post">
+            <form action="/checkout" method="post" class="needs-validation" novalidate>
                 <div class="address-section">
                     <div class="contact-detail">
                         <p>CONTACT DETAIL</p>
                         <div class="row">
-                            <div class="mb-3 col-4">
-                                <input type="text" class="form-control" placeholder="Name*" value="<%= currUser.name %>" name="name">
+                            <div class="mb-3 col-md-4">
+                                <input type="text" class="form-control" placeholder="Name*" value="<%= currUser.name %>" name="name" required>
                             </div>
-                            <div class="mb-3 col-4">
-                                <input type="text" class="form-control" placeholder="Mobile No*" value="<%= currUser.contact %>" name="contact">
+                            <div class="mb-3 col-md-4">
+                                <input type="text" class="form-control" placeholder="Mobile No*" value="<%= currUser.contact %>" name="contact" required>
                             </div>
                         </div>
                     </div>
                     <div class="address">
                         <p>ADDRESS</p>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Address (House No, Building, Street, Area)*" value="<%= currUser.address %>" name="street">
+                            <input type="text" class="form-control" placeholder="Address (House No, Building, Street, Area)*" value="<%= currUser.address %>" name="street" required>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-4">
-                                <input type="text" class="form-control" placeholder="City*" name="city">
+                                <input type="text" class="form-control" placeholder="City*" name="city" required>
                             </div>
                             <div class="mb-3 col-4">
-                                <input type="text" class="form-control" placeholder="State*" name="state">
+                                <input type="text" class="form-control" placeholder="State*" name="state" required>
                             </div>
                             <div class="mb-3 col-4">
-                                <input type="number" class="form-control" placeholder="Pin Code*" name="pincode">
+                                <input type="number" class="form-control" placeholder="Pin Code*" name="pincode" required>
                             </div>
                         </div>
                     </div>
@@ -38,17 +38,15 @@
                 <hr>
                 <div class="payment-section">
                     <p>CHOOSE PAYMENT MODE</p>
-                    <div class="col-4 mb-3">
-                        <label class="form-label" for="paymentMethod">Payment Method</label>
-                        <select class="form-select" id="paymentMethod" name="paymentMethod" name="paymentMethod" required>
-                            <option value="cash_on_delivery">Cash On Delivery</option>
-                            <!-- <option value="credit_card">Credit Card</option>
-                            <option value="debit_card">Debit Card</option>
-                            <option value="paypal">PayPal</option> -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label" for="paymentMode">Payment Mode</label>
+                        <select class="form-select" id="paymentMode" name="paymentMode" required>
+                            <option value="COD">Cash On Delivery</option>
+                            <option value="ONLINE">Pay Online</option>
                         </select>
                     </div>
-                    <div class="col-4">
-                        <button class="btn btn-outline-primary" type="submit">Place Order</button>
+                    <div class="col-md-4">
+                        <button class="btn" type="submit">Place Order</button>
                     </div>
                 </div>
             </form>

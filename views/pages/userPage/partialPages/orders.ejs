@@ -1,16 +1,33 @@
 <div class="order-container">
-    <h1>Your Orders</h1>
-    <div class="">
-        <table>
-            <tr>
-                <th>Product id</th>
-                <th>Price</th>
-                <th>Quantity </th>
-            </tr>
-            <% orderList.forEach(order => { %>
-                <tr>
-                    <td><%= order._id %></td>
+    <h3>All Orders</h3>
+    <div class="order-list">
+        <div class="card-group">
+            <% orderList.reverse().forEach(order => { %>
+                <% order.items.forEach(item => { %>
+                    <div class="order mb-3">
+                        <div class="card">
+                            <div class="row g-0">
+                                <div class="col-md-4" id="img-container">
+                                  <img src="<%= item.product.imageUrl %>" class="img-fluid" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="card-body">
+                                    <h5 class="card-title"><%= item.product.title %></h5>
+                                    <p class="card-text">Size : <%= item.product.size %></p>
+                                    <p class="card-text">Order Date : <small><%= order.date.toString().split(' ').slice(0,4).join(' ') %></small><br>Status : <small class="text-body-secondary"><%= order.orderStatus %></small></p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% if(order.orderStatus === 'Delivered') { %>
+                            <div class="review">
+                                <p class="text-body-secondary">Rate and Review</p>
+                                <a href="/review/<%= item.product._id %>">Write Review</a>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }); %>
             <% }); %>
-        </table>
+        </div>
     </div>
 </div>

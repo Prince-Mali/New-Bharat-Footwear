@@ -20,7 +20,9 @@
                                     <p><%= item.product.title %></p>
                                     <p>&#8377;<%= item.product.price %></p>
                                     <div class="action-button">
-                                        <button>WISHLIST</button>
+                                        <form action="/wishlist/add/<%= item.product._id %>" method="post">
+                                            <button type="submit">WISHLIST</button>
+                                        </form>
                                         <form action="/cart/remove/<%= item.product._id %>" method="post">
                                             <button type="submit">REMOVE</button>
                                         </form>

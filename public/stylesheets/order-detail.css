@@ -98,13 +98,26 @@
 
 /* payment-info */
 .payment-info {
+    text-align: center;
+}
+
+.payment-mode {
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: #fff;
-    height: fit-content;
+    margin-bottom: 1rem;
+}
+
+.payment-status {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
 }
 
 .order-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: #fff;

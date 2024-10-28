@@ -18,12 +18,8 @@ router.get('/account-main', (req, res) => {
 
 router.get('/orders', async(req, res) => {
     let userId = req.user._id;
-    let orderList = await Order.find({userId : userId});
+    let orderList = await Order.find({userId : userId}).populate('items.product');
     res.render('pages/userPage/partialPages/orders', {user : req.user, orderList });
-});
-
-router.get('/wishlist', (req, res) => {
-    res.render('pages/userPage/partialPages/wishlist', { user : req.user });
 });
 
 router.get('/addresses', (req, res) => {

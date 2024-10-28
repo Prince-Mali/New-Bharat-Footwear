@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+    .footer-container {
+        display: none;
+    }
+    .cards {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+    }
+    .card {
+        width: fit-content;
+    }
+    img {
+        width: 200px !important;
+        aspect-ratio: 3/2;
+        object-fit: contain;
+    }
+</style>
+
+<body>
+    <h2>My Wishlist</h2>
+    <div class="wishlist-container">
+        <% if(wishlist) { %>
+            <div class="cards">
+                <% wishlist.products.forEach(item => { %>
+                    <a href="/products/<%= item.productId._id %>">
+                        <div class="card">
+                            <img src="<%= item.productId.imageUrl %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-title"><b><%= item.productId.title %></b></p>
+                                <p class="card-text">&#8377;<%= item.productId.price %></p>
+                                <p class="card-title"><a href="/wishlist/remove/<%= item.productId._id %>">Remove from Wishlist</a></p>
+                            </div>
+                        </div>
+                    </a>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</body>

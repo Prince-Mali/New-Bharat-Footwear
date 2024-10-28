@@ -25,6 +25,7 @@
                     <div class="order-total">
                         <h4>Summary</h4>
                         <p><strong>Order ID:</strong>&nbsp;&nbsp; <%= order._id %></p>
+                        <p><strong>Tnx ID:</strong>&nbsp;&nbsp; <%= order.txnId %></p>
                         <p><strong>Date:</strong>&nbsp;&nbsp; <%= order.date.toString().split(' ').slice(0,4).join(' ') %></p>
                         <p><strong>Total Quantity:</strong>&nbsp;&nbsp; <%= order.totalQuantity %></p>
                         <p><strong>Total Price:</strong>&nbsp;&nbsp; <%= order.totalPrice %></p>
@@ -32,8 +33,14 @@
                 
                     <!-- Payment Information Section -->
                     <div class="payment-info">
-                        <h4>Payment Method</h4>
-                        <p><%= order.paymentMethod %></p>
+                        <div class="payment-mode">
+                            <h4>Payment Mode</h4>
+                            <p><%= order.paymentMode %></p>
+                        </div>
+                        <div class="payment-status">
+                            <h4>Payment Status</h4>
+                            <p><%= order.paymentStatus %></p>
+                        </div>
                     </div>
 
                     <!-- order-status -->

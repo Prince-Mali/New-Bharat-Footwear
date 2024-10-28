@@ -23,6 +23,31 @@ footer {
     }
 }
 
+.btn {
+    width: 100%;
+    background-color: #45adbb;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem;
+}
+
+.btn:hover {
+    background-color: #45adbb;
+    /* opacity: 0.9; */
+}
+
+@media (max-width : 800px) {
+    .main {
+        flex-direction: column;
+        margin: 0;
+        padding: 1rem 0;
+    }
+    .checkout-form {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
 /* sidebar */
 .sidebar {
     width: 25%;
@@ -50,4 +75,11 @@ footer {
     justify-content: space-between;
     padding: 1rem 0;
     font-weight: 700;
+}
+
+
+@media (max-width : 800px ) {
+    .sidebar {
+        width: 100%;
+    }
 }
