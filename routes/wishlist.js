@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Wishlist = require('../model/wishlist');
 const { isLoggedIn } = require('../middleware');
-const Cart = require('../model/cart');
 
 router.post('/wishlist/add/:productId', isLoggedIn, async(req, res) => {
     const { productId } = req.params;
@@ -10,7 +9,7 @@ router.post('/wishlist/add/:productId', isLoggedIn, async(req, res) => {
 
     let redirectUrl = req.session.redirectURl;
     redirectUrl = redirectUrl.split('/').slice(3).join('/');
-    console.log(redirectUrl);
+    // console.log(redirectUrl);
 
     let wishlist = await Wishlist.findOne({userId});
     if(!wishlist) {
@@ -52,6 +51,5 @@ router.get('/wishlist/remove/:productId', isLoggedIn, async (req, res) => {
     req.flash('success', 'Product removed from wishlist');
     res.redirect(`/${redirectUrl}`);
 });
-
 
 module.exports = router;

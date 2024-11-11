@@ -72,9 +72,8 @@ async function createOrder(userId, name, contact, street, city, state, pincode, 
     });
     await order.save();
     if(paymentMode === 'COD') {
-        await Cart.findOneAndDelete({userId : userId });
+        await Cart.findOneAndDelete({userId});
     }
-    // return order;
 };
 
 module.exports = router;

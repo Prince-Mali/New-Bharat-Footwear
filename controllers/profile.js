@@ -1,4 +1,5 @@
 const User = require('../model/user');
+const Order = require('../model/order');
 
 module.exports.profile = async (req, res) => {
     let { userId } = req.params;
@@ -14,15 +15,22 @@ module.exports.profileUpdateForm = async (req, res) => {
 
 module.exports.profileUpdate = async (req, res) => {
     let { userId } = req.params;
-    let { name, email, contact, image, address } = req.body;
-    let query = {};
-    if(name){ query.name = name};
-    if(email) { query.email = email};
-    if(contact) {query.contact = contact};
-    if(image) { query.image = image};
-    if(address){query.address = address};
+    let { name, email, contact, address } = req.body;
+    let query = {name, email, contact, address };
+    if(req.file) {
+        query.image = req.file.path;
+    }
 
-    let updatedUser = await User.findByIdAndUpdate(userId, query);
+    await User.findByIdAndUpdate(userId, query);
     res.redirect(`/profile/${userId}`);
 };
 
+module.exports.account = (req, res) => {
+    res.render('pages/userPage/partialPages/acount-main', { user : req.user});
+};
+
+module.exports.orders = async(req, res) => {
+    let userId = req.user._id;
+    let orderList = await Order.find({userId : userId}).populate('items.product');
+    res.render('pages/userPage/partialPages/orders', {user : req.user, orderList });
+};

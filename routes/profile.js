@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { isLoggedIn } = require('../middleware');
 const profileController = require('../controllers/profile');
-const Order = require('../model/order');
+const multer = require('multer');
+const { storage } = require('../CloudConfig');
+const upload = multer({storage});
 
 // profile route --
 router.get('/profile/:userId', isLoggedIn, profileController.profile);
@@ -10,20 +12,10 @@ router.get('/profile/:userId', isLoggedIn, profileController.profile);
 // userupdate route ---
 router.get('/profile/:userId/update', isLoggedIn, profileController.profileUpdateForm);
 
-router.post('/profile/:userId', isLoggedIn, profileController.profileUpdate);
+router.post('/profile/:userId', isLoggedIn, upload.single('image'), profileController.profileUpdate);
 
-router.get('/account-main', (req, res) => {
-    res.render('pages/userPage/partialPages/acount-main', { user : req.user});
-});
+router.get('/account-main', isLoggedIn, profileController.account);
 
-router.get('/orders', async(req, res) => {
-    let userId = req.user._id;
-    let orderList = await Order.find({userId : userId}).populate('items.product');
-    res.render('pages/userPage/partialPages/orders', {user : req.user, orderList });
-});
-
-router.get('/addresses', (req, res) => {
-    res.render('pages/userPage/partialPages/address', { user : req.user});
-});
+router.get('/orders', isLoggedIn, profileController.orders);
 
 module.exports = router;

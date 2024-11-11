@@ -37,5 +37,4 @@ router.post('/review/:productId/add', isLoggedIn, async (req, res) => {
     res.redirect(`/profile/${userId}`);
 });
 
-
 module.exports = router;

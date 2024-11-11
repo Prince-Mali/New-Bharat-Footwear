@@ -1,6 +1,8 @@
 const Product = require('../model/product');
 const User = require('../model/user');
 const Order = require('../model/order');
+const Cart = require('../model/cart');
+const Wishlist = require('../model/wishlist');
 
 module.exports.adminDashboard = async (req, res) => {
     const { totalSales, totalIncome, totalOrders, totalVisitors } = req.dataMatrics;
@@ -34,14 +36,39 @@ module.exports.newProduct = async (req, res) => {
 };
 
 module.exports.deleteProduct = async (req, res) => {
-    let {id : productId } = req.params;
-    await Product.findByIdAndDelete(productId);
-    req.flash('success', 'Product deleted!');
-    res.redirect('/admin');
-};
-
-module.exports.categoryList = async(req, res) => {
-    res.render('pages/adminPage/partialPages/category-list');
+    try {
+        let {id : productId } = req.params;
+        await Product.findByIdAndDelete(productId);
+    
+        // Update each wishlist and cart by removing the product and recalculating totalQuantity and totalPrice
+        let carts = await Cart.find({'items.product' : productId});
+         for (const cart of carts) {
+            // Remove the product from the cart's items
+            cart.items = cart.items.filter(item => !item.product.equals(productId));
+    
+            // Recalculate totalQuantity and totalPrice
+            cart.totalQuantity = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+            cart.totalPrice = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    
+            // Save the updated cart
+            await cart.save();
+        }
+    
+        let wishlists = await Wishlist.find({'products.productId' : productId});
+        
+        // Remove the product from each wishlist
+        for (const wishlist of wishlists) {
+            wishlist.products = wishlist.products.filter(product => !product.productId.equals(productId));
+            await wishlist.save();
+        }
+    
+        req.flash('success', 'Product deleted!');
+        res.redirect('/admin');
+    } catch (error) {
+        console.error('Error deleting product and updating cart and wishlist');
+        req.flash('error', 'Error deleting products. Plz try again!');
+        res.redirect('/admin');
+    }
 };
 
 module.exports.orderList = async(req, res) => {
@@ -53,7 +80,3 @@ module.exports.allUserList = async (req, res) => {
     let userList = await User.find();
     res.render('pages/adminPage/partialPages/all-user', { userList });
 }
-
-module.exports.report = (req, res) => {
-    res.render('pages/adminPage/partialPages/report');
-};

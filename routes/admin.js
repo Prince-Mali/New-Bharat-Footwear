@@ -36,9 +36,8 @@ router.post('/:productId/edit', isLoggedIn, isAdmin, upload.single('imageUrl'), 
 
 router.delete('/product/:id', isLoggedIn, isAdmin, adminControllers.deleteProduct);
 
-router.get('/category-list', isLoggedIn, isAdmin, adminControllers.categoryList);
-
 router.get('/order-list', isLoggedIn, isAdmin, adminControllers.orderList);
+
 router.post('/admin/orders/:orderId/status', isLoggedIn, isAdmin, async(req, res) => {
     let { orderId } = req.params;
     let { orderStatus } = req.body;
@@ -58,7 +57,5 @@ router.get('/admin/orders/:orderId/details', isLoggedIn, isAdmin, async(req, res
 });
 
 router.get('/all-user', isLoggedIn, isAdmin, adminControllers.allUserList);
-
-router.get('/report', isLoggedIn, isAdmin, adminControllers.report);
 
 module.exports = router;

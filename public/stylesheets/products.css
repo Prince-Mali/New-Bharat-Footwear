@@ -1,5 +1,8 @@
-/* product-section */
+.footer-container {
+    display: none;
+}
 
+/* product-section */
 .main {
     display: flex;
     height: 100vh;
@@ -68,7 +71,7 @@ a {
 
 .cards .card {
     border: none;
-    width: 20vw;
+    width: 15vw;
     margin-bottom: 1rem;
     margin-right: 0.4rem;
     opacity: 0.9;
@@ -79,9 +82,10 @@ a {
 }
 
 .card img {
+    width: 200px;
     padding: 0.5rem;
-    aspect-ratio: 3/2;
-    object-fit: contain;
+    /* aspect-ratio: 3/2; */
+    /* object-fit: contain; */
 }
 
 .card-body p {

@@ -1,80 +1,78 @@
 <%- layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/product.css">
 <body>
-    <div class="main">
-        <div class="product">
-            <div class="img-box">
-                <img src="<%= product.imageUrl %>" alt="">
-            </div>
-            <div class="product-detail-container">
-                <h1><%= product.title %></h1>
-                <p class="total-ratings" style="border: 1px solid black; display: inline;">3.9<i class="fa-solid fa-star"></i> &nbsp;46 Ratings</p>
+    <div class="main mb-3">
+        <div class="img-box">
+            <img src="<%= product.imageUrl %>" alt="">
+        </div>
+        <div class="product-details">
+            <h1><%= product.title %></h1>
+            <p class="total-ratings" style="border: 1px solid black; display: inline;">3.9<i class="fa-solid fa-star"></i> &nbsp;46 Ratings</p>
 
-                <hr>
+            <hr>
 
-                <p>&#8377;<%= product.price %>/-</p>
-                <p>Color : <%= product.color %></p>
-                <p>Size : <%= product.size %></p>
+            <p>&#8377;<%= product.price %>/-</p>
+            <p>Color : <%= product.color %></p>
+            <p>Size : <%= product.size %></p>
 
-                <!-- ------- -->
+            <!-- ------- -->
 
-                <div>
-                    <div class="button-group">
-                        <% if(product.quantity === 0) { %>
-                            <button class="btn btn-danger" disabled>Out of Stock</button>
-                        <% } else { %>
-                            <% if(!isInCart) { %>
-                                <form action="/cart/add/<%= product._id %>" method="post" id="add-cart-form">
-                                    <button type="submit"><i class="fa-solid fa-cart-arrow-down"></i>&nbsp;&nbsp;Add to Cart</button>
-                                </form>
-                            <% } else { %>
-                                <button class="cart-btn display" id="cart-btn"><a href="/cart">Go to Cart &nbsp; <i class="fa-solid fa-arrow-right"></i></a></button>
-                            <% } %>
-                        <% } %>
-                        
-                        <% if(!isInWishlist) { %>
-                            <form action="/wishlist/add/<%= product._id %>" method="post">
-                                <button type="submit"><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;WISHLIST</button>
+            <div>
+                <div class="button-group">
+                    <% if(product.quantity === 0) { %>
+                        <button class="btn btn-danger" disabled>Out of Stock</button>
+                    <% } else { %>
+                        <% if(!isInCart) { %>
+                            <form action="/cart/add/<%= product._id %>" method="post" id="add-cart-form">
+                                <button type="submit"><i class="fa-solid fa-cart-arrow-down"></i>&nbsp;&nbsp;Add to Cart</button>
                             </form>
                         <% } else { %>
-                            <button><a href="/wishlist/remove/<%= product._id %>"><i class="fa-solid fa-heart"></i>&nbsp;&nbsp;WISHLISTED</a></button>
+                            <button class="cart-btn display" id="cart-btn"><a href="/cart">Go to Cart &nbsp; <i class="fa-solid fa-arrow-right"></i></a></button>
                         <% } %>
-                    </div>
-
-                    <p><i class="fa-solid fa-shield-halved"></i>&nbsp;<b style="font-weight: 600;">Safe and Secure payments. 100% Authentic products</b></p>
-                </div>
-                
-                <hr>
-
-                <div class="product-detail">
-                    <h5>Product Details <i class="fa-regular fa-file-lines"></i></h5>
-                    <p>
-                        <%= product.description %>
-                    </p>
-                </div>
-
-                <hr>
-
-                <div class="product-reviews">
-                    <h4 class="mb-3">Customer Reviews (<%= productReviews.length %>)</h4>
-                    <% if(productReviews && productReviews.length ) { %>
-                        <div class="reviews">
-                            <% productReviews.forEach(review => { %>
-                                <p>
-                                    <span style="border: 0.5px solid black; padding: 0.1rem;"><%= review.rating %>&nbsp;<i class="fa-solid fa-star"></i></span>
-                                    &nbsp;<%= review.comment %>
-                                </p>
-                                <p>
-                                    <span><%= review.userId.name %></span>&nbsp;|
-                                    <%= review.date.toString().split(' ').slice(1,4).join(' ') %>
-                                </p>
-                                <hr>
-                            <% }); %>
-                        </div>
+                    <% } %>
+                    
+                    <% if(!isInWishlist) { %>
+                        <form action="/wishlist/add/<%= product._id %>" method="post">
+                            <button type="submit"><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;WISHLIST</button>
+                        </form>
                     <% } else { %>
-                        <p>No Reviews Yet</p>
+                        <button><a href="/wishlist/remove/<%= product._id %>"><i class="fa-solid fa-heart"></i>&nbsp;&nbsp;WISHLISTED</a></button>
                     <% } %>
                 </div>
+
+                <p><i class="fa-solid fa-shield-halved"></i>&nbsp;<b style="font-weight: 600;">Safe and Secure payments. 100% Authentic products</b></p>
+            </div>
+            
+            <hr>
+
+            <div class="product-detail">
+                <h5>Product Details <i class="fa-regular fa-file-lines"></i></h5>
+                <p>
+                    <%= product.description %>
+                </p>
+            </div>
+
+            <hr>
+
+            <div class="product-reviews">
+                <h4 class="mb-3">Customer Reviews (<%= productReviews.length %>)</h4>
+                <% if(productReviews && productReviews.length ) { %>
+                    <div class="reviews">
+                        <% productReviews.forEach(review => { %>
+                            <p>
+                                <span style="border: 0.5px solid black; padding: 0.1rem;"><%= review.rating %>&nbsp;<i class="fa-solid fa-star"></i></span>
+                                &nbsp;<%= review.comment %>
+                            </p>
+                            <p>
+                                <span><%= review.userId.name %></span>&nbsp;|
+                                <%= review.date.toString().split(' ').slice(1,4).join(' ') %>
+                            </p>
+                            <hr>
+                        <% }); %>
+                    </div>
+                <% } else { %>
+                    <p>No Reviews Yet</p>
+                <% } %>
             </div>
         </div>
     </div>

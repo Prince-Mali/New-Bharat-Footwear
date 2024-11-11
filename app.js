@@ -140,12 +140,6 @@ app.use('/', paymentRoute);
 // review routes --
 app.use('/', reviewRoute);
 
-// // hash ---
-// function generatePaymentHash(paymentData) {
-//     const hashString = `${process.eventNames.PAY_API_KEY}|${paymentData.txnid}|${paymentData.amount}|${paymentData.productinfo}|${paymentData.firstname}|${paymentData.email}|||||||||||${process.env.PAYU_SALT_256BIT}`;
-//     return crypto.createHash('sha512').update(hashString).digest('hex');
-// }
-
 // Error handler ---
 app.use((err, req, res, next) => {
     console.error(err.stack)

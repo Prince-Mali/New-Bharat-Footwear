@@ -12,42 +12,46 @@
                     <p>Amount</p>
                 </div>
                 <div class="item-group">
-                    <% cart.items.forEach(item => { %>
-                        <div class="item">
-                            <div class="product">
-                                <a href="/products/<%= item.product._id %>"><img src="<%= item.product.imageUrl %>"></a>
-                                <div class="product-detail">
-                                    <p><%= item.product.title %></p>
-                                    <p>&#8377;<%= item.product.price %></p>
-                                    <div class="action-button">
-                                        <form action="/wishlist/add/<%= item.product._id %>" method="post">
-                                            <button type="submit">WISHLIST</button>
-                                        </form>
-                                        <form action="/cart/remove/<%= item.product._id %>" method="post">
-                                            <button type="submit">REMOVE</button>
-                                        </form>
+                    <% for(item of cart.items) { %>
+                        <% if(!item || item.product === null) { %>
+                            <p>product not found!</p>
+                        <% } else { %>
+                            <div class="item">
+                                <div class="product">
+                                    <a href="/products/<%= item.product._id %>"><img src="<%= item.product.imageUrl %>"></a>
+                                    <div class="product-detail">
+                                        <p><%= item.product.title %></p>
+                                        <p>&#8377;<%= item.product.price %></p>
+                                        <div class="action-button">
+                                            <form action="/wishlist/add/<%= item.product._id %>" method="post">
+                                                <button type="submit">WISHLIST</button>
+                                            </form>
+                                            <form action="/cart/remove/<%= item.product._id %>" method="post">
+                                                <button type="submit">REMOVE</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="qauntity">
+                                    <% if(item.product.quantity === 0) { %>
+                                        <p style="color: red;">Out of Stock</p>
+                                    <% } else { %>
+                                        <form id="cartForm-<%= item.product._id %>" action="/cart/update/<%= item.product._id %>" method="post">
+                                            <select class="form-select" onchange="document.getElementById('cartForm-<%= item.product._id %>').submit()" name="quantity">
+                                                <option value="1" <%= item.quantity === 1 ? 'selected' : '' %>>1</option>
+                                                <option value="2" <%= item.quantity === 2 ? 'selected' : '' %>>2</option>
+                                                <option value="3" <%= item.quantity === 3 ? 'selected' : '' %>>3</option>
+                                                <option value="4" <%= item.quantity === 4 ? 'selected' : '' %>>4</option>
+                                            </select>
+                                        </form>
+                                    <% } %>
+                                </div>
+                                <div class="amount">
+                                    <p>&#8377; <%= item.price %></p>
+                                </div>
                             </div>
-                            <div class="qauntity">
-                                <% if(item.product.quantity === 0) { %>
-                                    <p style="color: red;">Out of Stock</p>
-                                <% } else { %>
-                                    <form id="cartForm-<%= item.product._id %>" action="/cart/update/<%= item.product._id %>" method="post">
-                                        <select class="form-select" onchange="document.getElementById('cartForm-<%= item.product._id %>').submit()" name="quantity">
-                                            <option value="1" <%= item.quantity === 1 ? 'selected' : '' %>>1</option>
-                                            <option value="2" <%= item.quantity === 2 ? 'selected' : '' %>>2</option>
-                                            <option value="3" <%= item.quantity === 3 ? 'selected' : '' %>>3</option>
-                                            <option value="4" <%= item.quantity === 4 ? 'selected' : '' %>>4</option>
-                                        </select>
-                                    </form>
-                                <% } %>
-                            </div>
-                            <div class="amount">
-                                <p>&#8377; <%= item.price %></p>
-                            </div>
-                        </div>
-                    <% }); %>
+                        <% } %>
+                    <% }; %>
                 </div>
             </div>
             <div class="sidebar">
