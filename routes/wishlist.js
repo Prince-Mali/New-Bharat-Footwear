@@ -20,7 +20,7 @@ router.post('/wishlist/add/:productId', isLoggedIn, async(req, res) => {
 
     if(existingProductIndex >= 0) {
         req.flash('error', 'Product is already wishlisted!');
-        res.redirect(`/${redirectUrl}`);
+        return res.redirect(`/${redirectUrl}`);
     } else {
         wishlist.products.push({ productId });
         await wishlist.save();

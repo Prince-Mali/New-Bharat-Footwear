@@ -22,7 +22,7 @@ router.get('/checkout', isLoggedIn, async(req, res) => {
         res.render('pages/indexPage/checkout', { cart });
     } else {
         req.flash('error', 'Your cart is empty');
-        res.redirect('/cart');
+        return res.redirect('/cart');
     }
 });
 
@@ -33,14 +33,14 @@ router.post('/checkout', isLoggedIn, async(req, res) => {
     let cart = await Cart.findOne({userId : userId});
     if(!cart || cart.items.length === 0) {
         req.flash('error', 'your cart is empty!');
-        res.redirect('/cart');
+        return res.redirect('/cart');
     } else {
         const txnId = `txn_${Date.now()}`; // Generate unique transaction ID
         await createOrder(userId, name, contact, street, city, state, pincode, cart, paymentMode, txnId);
 
         if(paymentMode === 'COD') {
             req.flash('success', 'Your order has been placed successfully!');
-            res.redirect('/cart');
+            return res.redirect('/cart');
         } else {
             // Redirect to the payment initiation route
             return res.redirect(`/pay?txnId=${txnId}`);

@@ -63,7 +63,7 @@ module.exports.deleteProduct = async (req, res) => {
         }
     
         req.flash('success', 'Product deleted!');
-        res.redirect('/admin');
+        return res.redirect('/admin');
     } catch (error) {
         console.error('Error deleting product and updating cart and wishlist');
         req.flash('error', 'Error deleting products. Plz try again!');

@@ -27,12 +27,15 @@ const methodOverride = require('method-override');
 const crypto = require('crypto');
 
 // Database connection ---
+const dbUrl = process.env.DB_URL;
+
 main().then((res) => {
     console.log('connection successful!')
 }).catch((err) => {console.log(err)});
 
+
 async function main() {
-    await mongoose.connect(`${process.env.DB_URL}`);
+    await mongoose.connect(dbUrl);
 };
 
 // middelwares
@@ -52,7 +55,7 @@ app.use(cookieParser()); // cookie-parser
 
 // session --
 let store = MongoStore.create({
-    mongoUrl : 'mongodb://127.0.0.1:27017/bharatFootwear',
+    mongoUrl : dbUrl,
     crypto : {
         secret : process.env.SECRET
     },
