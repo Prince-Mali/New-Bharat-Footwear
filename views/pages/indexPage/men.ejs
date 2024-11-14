@@ -55,7 +55,7 @@
                         <% productList.forEach(function (product){%>
                             <a href="/products/<%= product._id %>">
                                 <div class="card">
-                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="...">
+                                    <img src="<%= product.imageUrl %>" class="card-img-top" alt="..." loading="lazy">
                                     <div class="card-body">
                                         <p class="card-title"><b><%= product.title %></b></p>
                                         <p class="card-text">&#8377;<%= product.price %></p>
