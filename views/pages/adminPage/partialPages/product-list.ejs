@@ -16,7 +16,7 @@
         <tbody style="text-align: start;">
             <% for(product of productList) { %>
                 <tr>
-                    <td><img src="<%= product.imageUrl %>" alt="">&nbsp;<%= product.title %></td>
+                    <td><img loading="lazy" src="<%= product.imageUrl %>" alt="">&nbsp;<%= product.title %></td>
                     <td><%= product._id %></td>
                     <td><%= product.price %></td>
                     <td><%= product.quantity %></td>

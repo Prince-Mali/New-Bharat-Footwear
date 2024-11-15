@@ -143,6 +143,11 @@ app.use('/', paymentRoute);
 // review routes --
 app.use('/', reviewRoute);
 
+// about page --
+app.get('/about-us', (req, res) => {
+    res.send('About Us');
+});
+
 // Error handler ---
 app.use((err, req, res, next) => {
     console.error(err.stack)

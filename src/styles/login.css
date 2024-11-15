@@ -40,3 +40,6 @@ a {
         border: none;
     }
 }
+.footer-container {
+    display: none;
+}

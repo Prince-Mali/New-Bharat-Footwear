@@ -10,7 +10,7 @@
                 <% for( item of wishlist.products) { %>
                     <a href="/products/<%= item.productId._id %>">
                         <div class="card">
-                            <img src="<%= item.productId.imageUrl %>" class="card-img-top" alt="...">
+                            <img loading="lazy" src="<%= item.productId.imageUrl %>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-title"><b><%= item.productId.title %></b></p>
                                 <p class="card-text">&#8377;<%= item.productId.price %></p>

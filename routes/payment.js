@@ -33,8 +33,8 @@ router.get('/pay', isLoggedIn, async (req, res) => {
                 email: order.address.email,
                 // address1 : order.userId,
                 phone: order.address.contact,
-                surl: "http://localhost:8080/success",
-                furl: "http://localhost:8080/failure"
+                surl: 'https://new-bharat-footwear.onrender.com/success',
+                furl: "https://new-bharat-footwear.onrender.com/failure"
             };
 
             try {

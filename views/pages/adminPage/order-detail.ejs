@@ -11,7 +11,7 @@
                     <% order.items.forEach(item => { %>
                         <div class="item">
                             <div class="item-image">
-                                <img src="<%= item.product.imageUrl %>" alt="">
+                                <img loading="lazy" src="<%= item.product.imageUrl %>" alt="">
                                 <p><%= item.product.title %></p>
                             </div>
                             <div class="item-detail">
