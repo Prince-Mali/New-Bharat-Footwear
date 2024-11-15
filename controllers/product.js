@@ -44,29 +44,35 @@ module.exports.getFilteredProducts = async (req, res) => {
     }
 };
 
-module.exports.getProductDetail = async (req, res) => {
-    let { productId } = req.params;
-    let userId = req.user._id;
-
-    let product = await Product.findById(productId);
-    let productReviews = await Review.find({productId}).populate('userId');
-
-    // check isincart product ---
-    let cart = await Cart.findOne({ userId });
-    if (!cart) {
-        cart = new Cart({ userId, items: [] });
+module.exports.getProductDetail = async (req, res, next) => {
+    try {
+        let { productId } = req.params;
+        const userId = req.user ? req.user._id : null; 
+    
+        let product = await Product.findById(productId);
+        let productReviews = await Review.find({productId}).populate('userId');
+    
+        // check isincart product ---
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            cart = new Cart({ userId, items: [] });
+        }
+        await cart.save();
+        const isInCart = cart.items.find(item => item.product == productId);
+    
+        // check isinwishlist product ---
+        let wishlist = await Wishlist.findOne({ userId });
+        if(!wishlist) {
+            wishlist = new Wishlist({ userId });
+        }
+        await wishlist.save();
+        const isInWishlist = await wishlist.products.find(product => product.productId == productId);
+    
+        // rendering product detail ---
+        res.render('pages/indexPage/product', { product, isInCart, isInWishlist, productReviews });
+    } catch (error) {
+        console.error('Error fetching product details:', error);
+        req.flash('error', 'Unable to retrieve product details');
+        res.redirect('/');
     }
-    await cart.save();
-    const isInCart = cart.items.find(item => item.product == productId);
-
-    // check isinwishlist product ---
-    let wishlist = await Wishlist.findOne({ userId });
-    if(!wishlist) {
-        wishlist = new Wishlist({ userId });
-    }
-    await wishlist.save();
-    const isInWishlist = await wishlist.products.find(product => product.productId == productId);
-
-    // rendering product detail ---
-    res.render('pages/indexPage/product', { product, isInCart, isInWishlist, productReviews });
 };

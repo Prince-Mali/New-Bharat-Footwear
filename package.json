@@ -1,12 +1,14 @@
 {
   "engines": {
-    "node" : "20.15.1"
+    "node": "20.15.1"
   },
   "name": "project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "minify-css": "postcss src/styles/*.css --dir public/stylesheets/",
+     "minify-js": "terser src/scripts/*.js --output-dir public/scripts --compress --mangle"
   },
   "keywords": [],
   "author": "prince mali",
@@ -30,5 +32,9 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0",
     "payu-websdk": "^1.1.1"
+  },
+  "devDependencies": {
+    "cssnano": "^7.0.6",
+    "postcss-cli": "^11.0.0"
   }
 }

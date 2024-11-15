@@ -1,0 +1,253 @@
+/* footer */
+.footer-container {
+    display: none;
+}
+
+/* main-div */
+.main {
+    display: flex;
+    padding: 1rem;
+    /* background-color: #b8b4b41d; */
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ /* sidebar */
+.sidebar {
+    width: 20%;
+    background-color: aliceblue;
+    margin-right: 1rem;
+    padding: 1rem;
+    padding-top: 4rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.sidebar .sidebar-close-btn {
+    display: none;
+    width: 2rem;
+    border: none;
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    align-content: center;
+    font-weight: 600;
+}
+
+.sidebar li:hover {
+    background-color: rgba(138, 185, 227, 0.707);
+    border-radius: 0.5rem;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #222;
+}
+
+.sidebar a:hover {
+    color: royalblue;
+}
+
+.sidebar-btn {
+    display: none;
+}
+
+@media (max-width : 800px) {
+    .container {
+        position: relative;
+        padding: 0;
+    }
+    .main {
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+    }
+    .sidebar {
+        position: fixed;
+        z-index: 99;
+        width: 60vw;
+        height: fit-content;
+        top: 4.2rem;
+        right: -60vw;
+        margin: 0;
+        padding: 1rem;
+        border-radius: 0;
+    }
+    .sidebar-btn {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 4rem;
+        height: 3rem;
+        border: none;
+        background-color: transparent;
+        font-size: 1.6rem;
+    }
+    .sidebar-close-btn {
+        display: block !important;
+    }
+}
+
+/* Main container */
+.main-container {
+    width: 80%;
+    background-color: aliceblue;
+    padding: 1rem;
+    margin-left: 2rem;
+    border-radius: 0.5rem;
+}
+
+.user-profile {
+    background-image: url('https://res.cloudinary.com/dp7o3qopm/image/upload/v1727972620/profile-background_vjyr8o.jpg');
+    border-radius: 1rem;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    padding: 3rem 1rem;
+    position: relative;
+}
+
+.user-profile img {
+    margin: 0 2rem;
+    width: 150px;
+    height: 150px;
+    border: 3px solid whitesmoke;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-profile button {
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+}
+
+.user-profile button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.user-profile-data {
+    color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    line-height: 1rem;
+}
+
+@media (max-width : 800px) {
+    .main-container {
+        width: 100vw;
+        margin: 0;
+        background-color: #fff;
+    }
+    .user-profile {
+        flex-direction: column;
+        padding: 1rem;
+        align-items: start;
+    }
+    .user-profile img {
+        margin: 1rem 0;
+    }
+    .user-profile button {
+        top: 2rem;
+    }
+}
+
+
+/* orderPage */
+.order-container {
+    position: relative;
+}
+
+.order-container .card-group {
+    flex-direction: column;
+    width: 80%;
+    height: 50vh;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+}
+
+.order-container .card-group::-webkit-scrollbar {
+    display: none;
+}
+
+.order {
+    border-radius: 0.5rem;
+    border: 0.5px solid rgba(164, 160, 160, 0.866);
+}
+
+.order .card {
+    height: fit-content;
+    flex-direction: row;
+    align-items: center;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 2px;
+    padding: 0 1rem;
+    border: none ;
+}
+
+.order #img-container {
+    padding: 1rem 0 !important;
+}
+
+.order img {
+    width: 200px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
+.order-container .review {
+    background-color: #fff;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        margin: 0;
+    }
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.order-container a {
+    background-color: transparent;
+    border: none;
+}
+
+.order-container a:hover {
+    color: rosybrown;
+}
+
+.review-form {
+    width: 50%;
+    /* height: 50%; */
+    /* position: absolute; */
+    background-color: #d6cccc;
+    padding: 1rem;
+    /* top: 25%; */
+    display: none;
+    border-radius: 0.5rem;
+}
