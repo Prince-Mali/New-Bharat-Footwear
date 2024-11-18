@@ -65,21 +65,27 @@ Go and check out :- https://new-bharat-footwear.onrender.com/
    git clone https://github.com/Prince-Mali/New-Bharat-Footwear.git
 
 2. Navigate to the project directory:
+    ``` bash 
     cd new-bharat-footwear
 
 3. Install dependencies:
+    ``` 
     npm install
 
 4. Set up the .env file with the following variables:
+    ``` bash 
     SECRET=your-session-secret
     MONGO_URI=your-mongodb-uri
     PAYU_KEY=your-payu-key
     PAYU_SALT=your-payu-salt
 
 5. Start the server:
+    ``` bash 
     npm start
 
-6. Open your browser and visit: http://localhost:8080
+6. Open your browser and visit: 
+   ``` bash
+    http://localhost:8080
 
 
 # 🎯 Future Improvements
