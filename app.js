@@ -145,7 +145,8 @@ app.use('/', reviewRoute);
 
 // about page --
 app.get('/about-us', (req, res) => {
-    res.send('About Us');
+    // res.send('About Us');
+    res.render(`pages/indexPage/about`);
 });
 
 // Error handler ---
