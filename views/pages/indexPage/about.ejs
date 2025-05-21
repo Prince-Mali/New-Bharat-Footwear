@@ -1,206 +1,94 @@
 <%- layout('/layouts/boilerplate') %>
 
 <style>
-    .about-section {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 40px 20px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.about-section h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: #222;
-}
-
-.about-section p {
-  font-size: 1.1rem;
-  color: #555;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
-}
-
-.team-category {
-  margin-bottom: 50px;
-}
-
-.team-category h2 {
-  font-size: 2rem;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-.team-members {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.member {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  width: 260px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out;
-}
-
-.member:hover {
-  transform: translateY(-5px);
-}
-
-.member img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  margin-bottom: 15px;
-}
-
-.member h3 {
-  font-size: 1.3rem;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.member p {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-.linkedin-link {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 1.5rem;
-  color: #0077b5;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.linkedin-link i {
-  margin-right: 6px;
-}
-
-.linkedin-link:hover {
-  color: #005582;
-  text-decoration: underline;
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .team-members {
-    flex-direction: column;
-    align-items: center;
+  .about-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
   }
 
-  .member {
-    width: 90%;
+  .about-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #222;
   }
-}
 
+  .about-section p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .single-member {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .single-member img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    margin-bottom: 15px;
+  }
+
+  .single-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #222;
+  }
+
+  .single-member p.role {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0077b5;
+    margin-bottom: 10px;
+  }
+
+  .single-member p.description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .linkedin-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 1.5rem;
+    color: #0077b5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .linkedin-link:hover {
+    color: #005582;
+  }
 </style>
 
 <section class="about-section">
-  <h1>About Us</h1>
-  <p>
-    Welcome to <strong>Bharat Footwear</strong> – your trusted destination for quality and stylish footwear. Our team of passionate developers is working hard to build a seamless shopping platform with modern tech and great user experience.
-  </p>
+  <h1>About Project</h1>
+  <p><strong>Bharat Footwear</strong> is a modern, responsive, and full-stack e-commerce footwear website designed, developed, and maintained by a single individual. From UI design to backend logic, this project showcases complete end-to-end development.</p>
 
-  <!-- ✅ Core Team Section -->
-  <div class="team-category">
-    <h2>💻 Core Team</h2>
-    <div class="team-members">
-
-      <!-- Mukesh Mali -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1746765192/WhatsApp_Image_2025-05-09_at_09.24.54_0b493aaf_mv3hlw.jpg" alt="Mukesh Mali">
-        <h3>Mukesh Mali (Frontend)</h3>
-        <p>Expert in UI/UX and responsive web design, ensuring a smooth visual experience across all devices.</p>
-        <a href="https://www.linkedin.com/in/mukeshmali" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-      <!-- Harish Kumar -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1745952945/bharatFootwear/hjuf4pjy3pnmvqx17k2f.jpg" alt="Harish Kumar">
-        <h3>Harish Kumar (Frontend)</h3>
-        <p>Focused on modern JavaScript frameworks and animations to enhance user interaction.</p>
-        <a href="https://www.linkedin.com/in/harishkumar" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-      <!-- Prince Mali -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1731343001/bharatFootwear/bgw3pssafixgncpzgaqv.jpg" alt="Prince Mali">
-        <h3>Prince Mali (Backend)</h3>
-        <p>Handles server logic, database management, and API integrations with performance in mind.</p>
-        <a href="https://www.linkedin.com/in/princemali" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ✅ Mentor Section -->
-  <div class="team-category">
-    <h2>👨‍🏫 Mentors</h2>
-    <div class="team-members">
-
-      <!-- Director 1 -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1746961559/1608180453417_jidyma.jpg" alt="Director">
-        <h3>Dr. Hemant Dhabhai</h3>
-        <p>Director of the institute, offering strategic direction and visionary leadership for technical growth.</p>
-        <a href="https://www.linkedin.com/in/dr-hemant-dhabhai-81058b10b/" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-      
-      <!-- HOD -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1746962222/vinn_pd0ur4.jpg" alt="HOD">
-        <h3>Mr. Vinayak Mehta</h3>
-        <p>Head of Department (CSE), guiding students in best coding practices and research-focused development.</p>
-        <a href="https://www.linkedin.com/in/" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-      <!-- Director 2 -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1746945984/1746249774111_dbob2j.jpg" alt="Mentor">
-        <h3>Mr. Deepanshu Mehta</h3>
-        <p>Guiding the team with industry insights, academic knowledge, and technical mentorship.</p>
-        <a href="https://www.linkedin.com/in/deepanshu-mehta-0761662b4/" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-      <!-- Mentor -->
-      <div class="member">
-        <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1746962054/raffgh_aptk4e.png" alt="Dr. Raghvendra Sharma">
-        <h3>Mr. Raghvendra Sharma</h3>
-        <p>Guiding the team with industry insights, academic knowledge, and technical mentorship.</p>
-        <a href="https://www.linkedin.com/in/raghvendra-sharma-445130a/" target="_blank" class="linkedin-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-    </div>
+  <div class="single-member">
+    <img src="https://res.cloudinary.com/dp7o3qopm/image/upload/v1731343001/bharatFootwear/bgw3pssafixgncpzgaqv.jpg" alt="Prince-mali">
+    <h3>Prince Mali</h3>
+    <p class="role">Full Stack Developer</p>
+    <p class="description">Responsible for frontend design, backend logic, database integration, and overall project architecture. A complete solo effort to bring Bharat Footwear to life.</p>
+    <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" class="linkedin-link">
+      <i class="fab fa-linkedin"></i>
+    </a>
   </div>
 </section>
